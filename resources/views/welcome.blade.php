@@ -1,83 +1,5 @@
-
-<!DOCTYPE html>
-<html lang="en">
-
-  <head>
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-
-    <title>Onix Digital Marketing HTML5 Template</title>
-
-    <!-- Bootstrap core CSS -->
-    <link href="welcome/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-
-    <!-- Additional CSS Files -->
-    <link rel="stylesheet" href="welcome/assets/css/fontawesome.css">
-    <link rel="stylesheet" href="welcome/assets/css/templatemo-onix-digital.css">
-    <link rel="stylesheet" href="welcome/assets/css/animated.css">
-    <link rel="stylesheet" href="welcome/assets/css/owl.css">
-<!--
-
-TemplateMo 565 Onix Digital
-
-https://templatemo.com/tm-565-onix-digital
-
--->
-  </head>
-
-<body>
-
-  <!-- ***** Preloader Start ***** -->
-  <div id="js-preloader" class="js-preloader">
-    <div class="preloader-inner">
-      <span class="dot"></span>
-      <div class="dots">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-    </div>
-  </div>
-  <!-- ***** Preloader End ***** -->
-
-  <!-- ***** Header Area Start ***** -->
-  <header class="header-area header-sticky wow slideInDown" data-wow-duration="0.75s" data-wow-delay="0s">
-    <div class="container">
-      <div class="row">
-        <div class="col-12">
-          <nav class="main-nav">
-            <!-- ***** Logo Start ***** -->
-            <a href="index.html" class="logo">
-              <img src="welcome/assets/images/logo.png">
-            </a>
-            <!-- ***** Logo End ***** -->
-            <!-- ***** Menu Start ***** -->
-            <ul class="nav">
-              <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
-              <li class="scroll-to-section"><a href="#services">Services</a></li>
-              <li class="scroll-to-section"><a href="#about">About</a></li>
-              <li class="scroll-to-section"><a href="#portfolio">Portfolio</a></li>
-              <li class="scroll-to-section"><a href="#video">Videos</a></li>
-              <li class="scroll-to-section"><a href="#contact">Contact Us</a></li>
-              <li class="scroll-to-section"><a href="{{ route('register') }}">S'inscrire</a></li>
-              <li class="scroll-to-section"><div class="main-red-button-hover"><a href="{{ route('login') }}">Se connecter</a></div></li>
-            </ul>
-            <a class='menu-trigger'>
-                <span>Menu</span>
-            </a>
-            <!-- ***** Menu End ***** -->
-          </nav>
-        </div>
-      </div>
-    </div>
-  </header>
-  <!-- ***** Header Area End ***** -->
+@extends('layouts.master')
+@section('content')
 
   <div class="main-banner" id="top">
     <div class="container">
@@ -87,9 +9,9 @@ https://templatemo.com/tm-565-onix-digital
             <div class="col-lg-6 align-self-center">
               <div class="owl-carousel owl-banner">
                 <div class="item header-text">
-                  <h6>Welcome to Onix Digital</h6>
-                  <h2>Build <em>your website</em> the best in <span>SEO</span>?</h2>
-                  <p>This is a professional looking HTML Bootstrap 5 website template brought to you by TemplateMo website.</p>
+                  <h6>Miabe Demarcheur</h6>
+                  <h2>Contactez nous pour <em>Devenir</em> un <span>Demarcheur</span></h2>
+                  <p>Avoir un compte demarcheur vous permettra de toucher un grand public pour vos annonces</p>
                   <div class="down-buttons">
                     <div class="main-blue-button-hover">
                       <a href="#contact">Message Us Now</a>
@@ -100,9 +22,9 @@ https://templatemo.com/tm-565-onix-digital
                   </div>
                 </div>
                 <div class="item header-text">
-                  <h6>Online Marketing</h6>
-                  <h2>Get the <em>best ideas</em> for <span>your website</span></h2>
-                  <p>You are NOT allowed to redistribute this template ZIP file on any Free CSS collection websites. Contact us for more info. Thank you.</p>
+                  <h6>Miabe Demarcheur</h6>
+                  <h2>Voulez vous <em>publier</em> une <span>annonce</span> ?</h2>
+                  <p>Veuillez créer un compte ou contacter nous...</p>
                   <div class="down-buttons">
                     <div class="main-blue-button-hover">
                       <a href="#services">Our Services</a>
@@ -113,8 +35,8 @@ https://templatemo.com/tm-565-onix-digital
                   </div>
                 </div>
                 <div class="item header-text">
-                  <h6>Video Tutorials</h6>
-                  <h2>Watch <em>our videos</em> for your <span>projects</span></h2>
+                  <h6>Miabe Demarcheur</h6>
+                  <h2><em>BIENVENUE</em> sur <span>MIABE DEMARCHEUR</span></h2>
                   <p>Please <a rel="nofollow" href="https://www.paypal.me/templatemo" target="_blank">support us</a> a little via PayPal if this digital marketing HTML template is useful for you. Thank you.</p>
                   <div class="down-buttons">
                     <div class="main-blue-button-hover">
@@ -142,36 +64,33 @@ https://templatemo.com/tm-565-onix-digital
         <img src="welcome/assets/images/services-left-dec.png" alt="">
       </div>
       <div class="row">
-        <div class="col-lg-6 offset-lg-3">
+        <div class="col-lg-8 offset-lg-2">
           <div class="section-heading">
-            <h2>We <em>Provide</em> The Best Service With <span>Our Tools</span></h2>
-            <span>Our Services</span>
+            <h2>Les demande de <em> chambre </em> et <span> locations</span></h2>
+            <span>LES DEMANDES DES UTILISATEURS</span>
           </div>
         </div>
       </div>
       <div class="row">
         <div class="col-lg-12">
           <div class="owl-carousel owl-services">
-            <div class="item">
-              <h4>Learn More about our Guidelines</h4>
-              <div class="icon"><img src="welcome/assets/images/service-icon-01.png" alt=""></div>
-              <p>Feel free to use this template for your business</p>
-            </div>
-            <div class="item">
-              <h4>Develop The Best Strategy for Business</h4>
-              <div class="icon"><img src="welcome/assets/images/service-icon-02.png" alt=""></div>
-              <p>Get to know more about the topic in details</p>
-            </div>
-            <div class="item">
-              <h4>UI / UX Design and Development</h4>
-              <div class="icon"><img src="welcome/assets/images/service-icon-03.png" alt=""></div>
-              <p>Get to know more about the topic in details</p>
-            </div>
-            <div class="item">
-              <h4>Discover &amp; Explore our SEO Tips</h4>
-              <div class="icon"><img src="welcome/assets/images/service-icon-04.png" alt=""></div>
-              <p>Feel free to use this template for your business</p>
-            </div>
+              @foreach ($user_annonces as $user_annonce)
+              <div class="item">
+                <h5>Recherche d'une maison {{$user_annonce->type}}, dans le quartier {{$user_annonce->quartier}}</h5>
+                {{-- <div class="icon"><img src="welcome/assets/images/service-icon-03.png" alt=""></div> --}}
+                <p>{{$user_annonce->description}}</p>
+                <div class="text-left">
+                    <button class="btn btn-primary btn-sm" style="border-radius:20px!important">
+                        detail
+                    </button>
+                    <button class="btn btn-success btn-sm" style="border-radius:20px!important">
+                       Saisir
+                    </button>
+                </div>
+              </div>
+              @endforeach
+
+{{--
             <div class="item">
               <h4>Optimizing your websites for Speed</h4>
               <div class="icon"><img src="welcome/assets/images/service-icon-01.png" alt=""></div>
@@ -192,16 +111,7 @@ https://templatemo.com/tm-565-onix-digital
               <div class="icon"><img src="welcome/assets/images/service-icon-04.png" alt=""></div>
               <p>Get to know more about the topic in details</p>
             </div>
-            <div class="item">
-              <h4>Accessibility for mobile viewing</h4>
-              <div class="icon"><img src="welcome/assets/images/service-icon-01.png" alt=""></div>
-              <p>Get to know more about the topic in details</p>
-            </div>
-            <div class="item">
-              <h4>Content Ideas for your next project</h4>
-              <div class="icon"><img src="welcome/assets/images/service-icon-02.png" alt=""></div>
-              <p>Feel free to use this template for your business</p>
-            </div>
+
             <div class="item">
               <h4>UI &amp; UX Design &amp; Development</h4>
               <div class="icon"><img src="welcome/assets/images/service-icon-03.png" alt=""></div>
@@ -211,8 +121,12 @@ https://templatemo.com/tm-565-onix-digital
               <h4>Discover the digital marketing trend</h4>
               <div class="icon"><img src="welcome/assets/images/service-icon-04.png" alt=""></div>
               <p>Get to know more about the topic in details</p>
-            </div>
+            </div> --}} --}}
+
           </div>
+          <div class="text-center">
+            <a href="{{route('annonces.index',['usertype'=>'simple'])}}" class="btn btn-sm btn-danger">Voir plus</a>
+           </div>
         </div>
       </div>
     </div>
@@ -228,7 +142,7 @@ https://templatemo.com/tm-565-onix-digital
         </div>
         <div class="col-lg-6">
           <div class="section-heading">
-            <h2>Grow your website with our <em>SEO Tools</em> &amp; <span>Project</span> Management</h2>
+            <h2>Les informations sur <em>Miabe Devis</em> &amp; <span>Project</span> Management</h2>
             <p>You can browse free HTML templates on Too CSS website. Visit the website and explore latest website templates for your projects.</p>
             <div class="row">
               <div class="col-lg-4">
@@ -238,7 +152,7 @@ https://templatemo.com/tm-565-onix-digital
                       <img src="welcome/assets/images/service-icon-01.png" alt="">
                     </div>
                     <div class="count-digit">320</div>
-                    <div class="count-title">SEO Projects</div>
+                    <div class="count-title">Utilisateurs</div>
                     <p>Lorem ipsum dolor sitti amet, consectetur.</p>
                   </div>
                 </div>
@@ -250,7 +164,7 @@ https://templatemo.com/tm-565-onix-digital
                       <img src="welcome/assets/images/service-icon-02.png" alt="">
                     </div>
                     <div class="count-digit">640</div>
-                    <div class="count-title">Websites</div>
+                    <div class="count-title">Demarcheurs</div>
                     <p>Lorem ipsum dolor sitti amet, consectetur.</p>
                   </div>
                 </div>
@@ -262,7 +176,7 @@ https://templatemo.com/tm-565-onix-digital
                       <img src="welcome/assets/images/service-icon-03.png" alt="">
                     </div>
                     <div class="count-digit">120</div>
-                    <div class="count-title">Satisfied Clients</div>
+                    <div class="count-title">Publications</div>
                     <p>Lorem ipsum dolor sitti amet, consectetur.</p>
                   </div>
                 </div>
@@ -280,9 +194,9 @@ https://templatemo.com/tm-565-onix-digital
     </div>
     <div class="container">
       <div class="row">
-        <div class="col-lg-6 offset-lg-3">
+        <div class="col-lg-8 offset-lg-2">
           <div class="section-heading">
-            <h2>Our Recent <em>Projects</em> &amp; Case Studies <span>for Clients</span></h2>
+            <h2>Les <em>Annonces</em> &amp; des <span>Demarcheurs</span></h2>
             <span>Our Portfolio</span>
           </div>
         </div>
@@ -750,32 +664,4 @@ https://templatemo.com/tm-565-onix-digital
   </footer>
 
 
-  <!-- Scripts -->
-  <script src="welcome/vendor/jquery/jquery.min.js"></script>
-  <script src="welcome/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="welcome/assets/js/owl-carousel.js"></script>
-  <script src="welcome/assets/js/animation.js"></script>
-  <script src="welcome/assets/js/imagesloaded.js"></script>
-  <script src="welcome/assets/js/custom.js"></script>
-
-  <script>
-  // Acc
-    $(document).on("click", ".naccs .menu div", function() {
-      var numberIndex = $(this).index();
-
-      if (!$(this).is("active")) {
-          $(".naccs .menu div").removeClass("active");
-          $(".naccs ul li").removeClass("active");
-
-          $(this).addClass("active");
-          $(".naccs ul").find("li:eq(" + numberIndex + ")").addClass("active");
-
-          var listItemHeight = $(".naccs ul")
-            .find("li:eq(" + numberIndex + ")")
-            .innerHeight();
-          $(".naccs ul").height(listItemHeight + "px");
-        }
-    });
-  </script>
-</body>
-</html>
+@endsection

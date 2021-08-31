@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Services\AnnonceService;
+use App\Models\Annonce;
 
 class HomeController extends Controller
 {
@@ -9,8 +11,9 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(AnnonceService $annonceService)
     {
+        $this->annonceService = $annonceService;
         $this->middleware('auth');
     }
 
@@ -21,6 +24,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('dashboard');
+        $data['annonces'] =$this->annonceService->userAnnonce(auth()->user());
+        // dd($data['annonces']);
+        return view('dashboard',$data);
     }
 }
