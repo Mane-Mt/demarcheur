@@ -13,17 +13,11 @@ class AnnonceController extends Controller
     {
         $this->annonceService = $annonceService;
     }
-    public function index($usertype = null){
-        
-        if ($usertype == null) {
-            $data['annonces'] = $this->annonceService->all();
+    public function index($annonceType =null){
+        if ($annonceType == null) {
+            $data['annonces'] = Annonce::orderBy('id','desc')->get();
         }else{
-            $data['annones'] = Annonce::with('user')->whereHas('user',function($q) use($usertype){
-                $q->where('userType',$usertype);
-                if($usertype == 'simple'){
-                    $q->where('usertype','Admin');
-                }
-            })->get();
+            $data['annonces'] = Annonce::where('annonceType',$annonceType)->orderBy('id','desc')->get();
         }
 
         return view('annonces.index',$data);
@@ -174,24 +168,25 @@ class AnnonceController extends Controller
             $messageup = " pohto non uploadé";
         }
         $annonce = new Annonce();
+        $annonce->annonceType = $request->annonceType;
         $annonce->type = $type_de_chambre;
         $annonce->quartier = $quartier_ou_trouve_chambre;
         $annonce->description  = $descrition_de_chambre;
-        $annonce->annoncestatus  = $etat_annonce;
+        $annonce->status  = $etat_annonce;
 
-        if(Auth::user()->usertype == 'admin')
-        {
-            $annonce->posteur = 'admin';
-        }
-        else{
-            if (Auth::user()->type_personne == 'demarcheur') {
-               $annonce->posteur = 'demarcheur';
-            }else{
-               $annonce->posteur = 'null';
+        // if(Auth::user()->usertype == 'admin')
+        // {
+        //     $annonce->posteur = 'admin';
+        // }
+        // else{
+        //     if (Auth::user()->type_personne == 'demarcheur') {
+        //        $annonce->posteur = 'demarcheur';
+        //     }else{
+        //        $annonce->posteur = 'null';
 
-            }
+        //     }
 
-        }
+        // }
 
         $annonce->user_id = Auth::id(); // l'id du demarcheur qui a poster l'annonce
         $annonce->photo1 = $photo1Name;

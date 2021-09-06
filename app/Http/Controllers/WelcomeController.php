@@ -125,14 +125,16 @@ class WelcomeController extends Controller
     //     }
         // dd($chambres,$bestDemarcheur);
         // return view('welcome',['chambres'=>$chambres,'bestDemarcheur'=>$bestDemarcheur]);
-        $data['demarcheur_annonces'] = Annonce::with('user')->whereHas('user',function($query){
-            $query->where('usertype','demarcheur');
-        })->limit(10)->get();
+        $annonces = Annonce::with('user')->orderBy('id','desc')->get();
 
-        $data['user_annonces'] = Annonce::with('user')->whereHas('user',function($query){
-            $query->where('usertype','simple')->orwhere('usertype','admin');
-        })->limit(10)->get();
-        // dd($data['user_annonces']);
+        $data['request_annonces'] = $annonces->where('annonceType','Demande')->take(10);
+        $data['offer_annonces'] = $annonces->where('annonceType','Offre')->take(10);
+        
+        $data['une_piece_annonce'] = $annonces->where('type','Une Piece')->where('annonceType','Offre')->first();
+        $data['villa_annonce'] = $annonces->where('type','Villa')->where('annonceType','Offre')->first();
+        $data['chambre_salon_annonce'] = $annonces->where('type','Chambre salon')->where('annonceType','Offre')->first();
+        $data['deux_chambre_annonce'] = $annonces->where('type','Deux chambres salon')->where('annonceType','Offre')->first();
+        // dd($annonces, $data['request_annonces']);
         return view('welcome',$data);
     }
 

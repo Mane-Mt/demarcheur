@@ -67,28 +67,107 @@
         <div class="col-lg-8 offset-lg-2">
           <div class="section-heading">
             <h2>Les demande de <em> chambre </em> et <span> locations</span></h2>
-            <span>LES DEMANDES DES UTILISATEURS</span>
+            {{-- <span>LES DEMANDES DES UTILISATEURS</span> --}}
           </div>
         </div>
       </div>
       <div class="row">
         <div class="col-lg-12">
-          <div class="owl-carousel owl-services">
-              @foreach ($user_annonces as $user_annonce)
-              <div class="item">
-                <h5>Recherche d'une maison {{$user_annonce->type}}, dans le quartier {{$user_annonce->quartier}}</h5>
-                {{-- <div class="icon"><img src="welcome/assets/images/service-icon-03.png" alt=""></div> --}}
-                <p>{{$user_annonce->description}}</p>
-                <div class="text-left">
-                    <button class="btn btn-primary btn-sm" style="border-radius:20px!important">
-                        detail
-                    </button>
-                    <button class="btn btn-success btn-sm" style="border-radius:20px!important">
-                       Saisir
-                    </button>
+            <div class="owl-carousel owl-services" style="margin-bottom: 0px !important;">
+              @forelse ($request_annonces as $request_annonce)
+                <div class="item">
+                    <h5>Recherche d'une maison <b><i>{{$request_annonce->type}}</i></b> , dans le quartier <b>{{$request_annonce->quartier}}</b> </h5>
+                    <div class="icon"><img src="welcome/assets/images/service-icon-03.png" alt=""></div>
+                    <p>{{ Str::substr($request_annonce->description, 0, 100).'...' }}</p>
+                    <div class="text-left">
+                        <button class="btn btn-primary btn-sm" style="border-radius:20px!important">
+                            detail
+                        </button>
+                        {{-- <button class="btn btn-success btn-sm" style="border-radius:20px!important">
+                        Saisir
+                        </button> --}}
+
+                        <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Launch demo modal
+  </button>
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+                        @component('components.btn-modal')
+                        @slot('actionTitle') Supprimer @endslot
+                        @slot('btnName')Details @endslot
+                        @slot('class')btn-success btn-sm btn-circle @endslot
+                        @slot('modalId')detail{{$request_annonce->id}} @endslot
+                        @slot('modalTitle')Test Title @endslot
+                        @slot('modalBody')
+                        <div class="text-center ">
+                            <i class="far fa-6x fa-question-circle text-danger"></i>
+                            <h5>Voulez vous réllement supprimer cet utilisateur? </h5>
+                        </div>
+                        @endslot
+                        @slot('link'){{ route('annonces.index',$request_annonce->id) }}@endslot
+                        @slot('submitMethod') DELETE @endslot
+                        @slot('saveBtnColor') danger @endslot
+                        @slot('savebtnTitle') Supprimer @endslot
+                    @endcomponent
+                    </div>
                 </div>
+
+              @empty
+
+              <div class="item">
+                    Ooops ! desolé.... Nous n'avons pas d'annonce  pour vous
               </div>
-              @endforeach
+
+              @endforelse
+
+
+                </div>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Launch demo modal
+                  </button>
+
+                  <!-- Modal -->
+                  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                          ...
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                          <button type="button" class="btn btn-primary">Save changes</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                <div class="text-center">
+                    <a href="{{route('annonces.index','Demande')}}" class="btn btn-circle btn-danger">Voir plus de demande</a>
+                    </div>
 
 {{--
             <div class="item">
@@ -96,37 +175,11 @@
               <div class="icon"><img src="welcome/assets/images/service-icon-01.png" alt=""></div>
               <p>Get to know more about the topic in details</p>
             </div>
-            <div class="item">
-              <h4>See The Strategy In The Market</h4>
-              <div class="icon"><img src="welcome/assets/images/service-icon-02.png" alt=""></div>
-              <p>Get to know more about the topic in details</p>
-            </div>
-            <div class="item">
-              <h4>Best Content Ideas for your pages</h4>
-              <div class="icon"><img src="welcome/assets/images/service-icon-03.png" alt=""></div>
-              <p>Feel free to use this template for your business</p>
-            </div>
-            <div class="item">
-              <h4>Optimizing Speed for your web pages</h4>
-              <div class="icon"><img src="welcome/assets/images/service-icon-04.png" alt=""></div>
-              <p>Get to know more about the topic in details</p>
-            </div>
+             --}}
 
-            <div class="item">
-              <h4>UI &amp; UX Design &amp; Development</h4>
-              <div class="icon"><img src="welcome/assets/images/service-icon-03.png" alt=""></div>
-              <p>Get to know more about the topic in details</p>
-            </div>
-            <div class="item">
-              <h4>Discover the digital marketing trend</h4>
-              <div class="icon"><img src="welcome/assets/images/service-icon-04.png" alt=""></div>
-              <p>Get to know more about the topic in details</p>
-            </div> --}} --}}
 
-          </div>
-          <div class="text-center">
-            <a href="{{route('annonces.index',['usertype'=>'simple'])}}" class="btn btn-sm btn-danger">Voir plus</a>
-           </div>
+
+
         </div>
       </div>
     </div>
@@ -206,18 +259,31 @@
       <div class="row">
         <div class="col-lg-12">
           <div class="owl-carousel owl-portfolio">
-            <div class="item">
-              <div class="thumb">
-                <img src="welcome/assets/images/portfolio-01.jpg" alt="">
-                <div class="hover-effect">
-                  <div class="inner-content">
-                    <a rel="sponsored" href="https://templatemo.com/tm-564-plot-listing" target="_parent"><h4>First Project</h4></a>
-                    <span>Plot Listing</span>
+              @forelse ($offer_annonces as $offer_annonce)
+              <div class="item">
+                <div class="thumb">
+                  <img src="{{asset('images/'.$offer_annonce->photo1)}}" alt="" height="600px" width="auto">
+                  <div class="hover-effect">
+                    <div class="inner-content">
+                        <span>{{$offer_annonce->type}}</span><br>
+                        <span>Quartier <b>{{$offer_annonce->quartier}}</b> </span> <br>
+                        <span>{{ Str::substr($offer_annonce->description, 0, 20).'....'}}</span>
+                      <a rel="sponsored" href="https://templatemo.com/tm-564-plot-listing" target="_parent"><h4>Detail</h4></a>
+
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <div class="item">
+              @empty
+              <div class="item">
+                Ooops ! desolé.... Nous n'avons pas d'annonce  pour vous
+              </div>
+
+              @endforelse
+
+
+
+            {{-- <div class="item">
               <div class="thumb">
                 <img src="welcome/assets/images/portfolio-02.jpg" alt="">
                 <div class="hover-effect">
@@ -239,94 +305,8 @@
                 </div>
               </div>
             </div>
-            <div class="item">
-              <div class="thumb">
-                <img src="welcome/assets/images/portfolio-04.jpg" alt="">
-                <div class="hover-effect">
-                  <div class="inner-content">
-                    <a href="#"><h4>Project Four</h4></a>
-                    <span>Website Marketing</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="thumb">
-                <img src="welcome/assets/images/portfolio-01.jpg" alt="">
-                <div class="hover-effect">
-                  <div class="inner-content">
-                    <a href="#"><h4>Fifth Project</h4></a>
-                    <span>Digital Assets</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="thumb">
-                <img src="welcome/assets/images/portfolio-02.jpg" alt="">
-                <div class="hover-effect">
-                  <div class="inner-content">
-                    <a href="#"><h4>Sixth Project</h4></a>
-                    <span>SEO &amp; Marketing</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="thumb">
-                <img src="welcome/assets/images/portfolio-03.jpg" alt="">
-                <div class="hover-effect">
-                  <div class="inner-content">
-                    <a href="#"><h4>7th Project</h4></a>
-                    <span>SEO &amp; Marketing</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="thumb">
-                <img src="welcome/assets/images/portfolio-04.jpg" alt="">
-                <div class="hover-effect">
-                  <div class="inner-content">
-                    <a href="#"><h4>8th Project</h4></a>
-                    <span>SEO &amp; Marketing</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="thumb">
-                <img src="welcome/assets/images/portfolio-01.jpg" alt="">
-                <div class="hover-effect">
-                  <div class="inner-content">
-                    <a href="#"><h4>9th Project</h4></a>
-                    <span>SEO &amp; Marketing</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="thumb">
-                <img src="welcome/assets/images/portfolio-02.jpg" alt="">
-                <div class="hover-effect">
-                  <div class="inner-content">
-                    <a href="#"><h4>Project Ten</h4></a>
-                    <span>SEO &amp; Marketing</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="thumb">
-                <img src="welcome/assets/images/portfolio-03.jpg" alt="">
-                <div class="hover-effect">
-                  <div class="inner-content">
-                    <a href="#"><h4>Project Eleven</h4></a>
-                    <span>SEO &amp; Marketing</span>
-                  </div>
-                </div>
-              </div>
-            </div>
+
+
             <div class="item">
               <div class="thumb">
                 <img src="welcome/assets/images/portfolio-04.jpg" alt="">
@@ -337,8 +317,12 @@
                   </div>
                 </div>
               </div>
-            </div>
+            </div> --}}
           </div>
+        <div class="text-center mt-5">
+            <a href="{{route('annonces.index','Offre')}}" class="btn btn-block btn-lg btn-circle btn-danger">Voir plus d'offre </a>
+        </div>
+
         </div>
       </div>
     </div>
@@ -413,6 +397,142 @@
     </div>
   </div>
 
+
+  <div id="video" class="our-videos section">
+    <div class="videos-left-dec">
+      <img src="welcome/assets/images/videos-left-dec.png" alt="">
+    </div>
+    <div class="videos-right-dec">
+      <img src="welcome/assets/images/videos-right-dec.png" alt="">
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="naccs">
+            <div class="grid">
+              <div class="row">
+                <div class="col-lg-8">
+                  <ul class="nacc">
+
+                      @if ($villa_annonce!= null)
+                      <li class="active">
+                        <div>
+                          <div class="thumb">
+                            {{-- <iframe width="100%" height="auto" src="https://www.youtube.com/embed/JynGuQx4a1Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> --}}
+                            <img src="{{asset('images/'.$villa_annonce->photo1)}}" alt="" srcset="">
+                            <div class="overlay-effect">
+                              <a href="#"><h4>Villa</h4></a>
+                              <span>SEO &amp; Marketing</span>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                      @else
+                        @include('common.house-type-thumb')
+                      @endif
+
+                      @if ($deux_chambre_annonce!= null)
+                      <li>
+                        <div>
+                          <div class="thumb">
+                            {{-- <iframe width="100%" height="auto" src="https://www.youtube.com/embed/JynGuQx4a1Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> --}}
+                            <img src="{{asset('images/'.$deux_chambre_annonce->photo1)}}" alt="" srcset="">
+                            <div class="overlay-effect">
+                              <a href="#"><h4>Villa</h4></a>
+                              <span>SEO &amp; Marketing</span>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                      @else
+                        @include('common.house-type-thumb')
+                      @endif
+
+                      @if ($chambre_salon_annonce!= null)
+                      <li>
+                        <div>
+                          <div class="thumb">
+                            {{-- <iframe width="100%" height="auto" src="https://www.youtube.com/embed/JynGuQx4a1Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> --}}
+                            <img src="{{asset('images/'.$chambre_salon_annonce->photo1)}}" alt="" srcset="">
+                            <div class="overlay-effect">
+                              <a href="#"><h4>Villa</h4></a>
+                              <span>SEO &amp; Marketing</span>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                      @else
+                        @include('common.house-type-thumb')
+                      @endif
+
+                      @if ($une_piece_annonce!= null)
+                      <li>
+                        <div>
+                          <div class="thumb">
+                            {{-- <iframe width="100%" height="auto" src="https://www.youtube.com/embed/JynGuQx4a1Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> --}}
+                            <img src="{{asset('images/'.$une_piece_annonce->photo1)}}" alt="" srcset="">
+                            <div class="overlay-effect">
+                              <a href="#"><h4>Villa</h4></a>
+                              <span>SEO &amp; Marketing</span>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                      @else
+                        @include('common.house-type-thumb')
+                      @endif
+
+
+                  </ul>
+                </div>
+                <div class="col-lg-4">
+                  <div class="menu">
+                    <div class="active">
+                      <div class="thumb">
+                        <img src="welcome/assets/images/video-thumb-01.png" alt="">
+                        <div class="inner-content">
+                          <h4>Villa</h4>
+                          <span>Dernière annonce de villa</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div>
+                      <div class="thumb">
+                        <img src="welcome/assets/images/video-thumb-02.png" alt="">
+                        <div class="inner-content">
+                          <h4>Deux chambres salon</h4>
+                          <span>Dernière annonce de deux chambres salon</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div>
+                      <div class="thumb">
+                        <img src="welcome/assets/images/video-thumb-03.png" alt="Marketing">
+                        <div class="inner-content">
+                          <h4>Chambre salon</h4>
+                          <span>Dernière annonce de  chambre salon</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div>
+                      <div class="thumb">
+                        <img src="welcome/assets/images/video-thumb-04.png" alt="SEO Work">
+                        <div class="inner-content">
+                          <h4>Une pièce</h4>
+                          <span>Dernière annonce d'une pièce</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div id="subscribe" class="subscribe">
     <div class="container">
       <div class="row">
@@ -434,114 +554,6 @@
     </div>
   </div>
 
-  <div id="video" class="our-videos section">
-    <div class="videos-left-dec">
-      <img src="welcome/assets/images/videos-left-dec.png" alt="">
-    </div>
-    <div class="videos-right-dec">
-      <img src="welcome/assets/images/videos-right-dec.png" alt="">
-    </div>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="naccs">
-            <div class="grid">
-              <div class="row">
-                <div class="col-lg-8">
-                  <ul class="nacc">
-                    <li class="active">
-                      <div>
-                        <div class="thumb">
-                          <iframe width="100%" height="auto" src="https://www.youtube.com/embed/JynGuQx4a1Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                          <div class="overlay-effect">
-                            <a href="#"><h4>Project One</h4></a>
-                            <span>SEO &amp; Marketing</span>
-                          </div>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <div>
-                        <div class="thumb">
-                          <iframe width="100%" height="auto" src="https://www.youtube.com/embed/RdJBSFpcO4M" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                          <div class="overlay-effect">
-                            <a href="#"><h4>Second Project</h4></a>
-                            <span>Advertising &amp; Marketing</span>
-                          </div>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <div>
-                        <div class="thumb">
-                          <iframe width="100%" height="auto" src="https://www.youtube.com/embed/ZlfAjbQiL78" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                          <div class="overlay-effect">
-                            <a href="#"><h4>Project Three</h4></a>
-                            <span>Digital &amp; Marketing</span>
-                          </div>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <div>
-                        <div class="thumb">
-                          <iframe width="100%" height="auto" src="https://www.youtube.com/embed/mx1WseE7-0Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                          <div class="overlay-effect">
-                            <a href="#"><h4>Fourth Project</h4></a>
-                            <span>SEO &amp; Advertising</span>
-                          </div>
-                        </div>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-                <div class="col-lg-4">
-                  <div class="menu">
-                    <div class="active">
-                      <div class="thumb">
-                        <img src="welcome/assets/images/video-thumb-01.png" alt="">
-                        <div class="inner-content">
-                          <h4>Project One</h4>
-                          <span>SEO &amp; Marketing</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div>
-                      <div class="thumb">
-                        <img src="welcome/assets/images/video-thumb-02.png" alt="">
-                        <div class="inner-content">
-                          <h4>Second Project</h4>
-                          <span>Advertising &amp; Marketing</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div>
-                      <div class="thumb">
-                        <img src="welcome/assets/images/video-thumb-03.png" alt="Marketing">
-                        <div class="inner-content">
-                          <h4>Project Three</h4>
-                          <span>Digital &amp; Marketing</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div>
-                      <div class="thumb">
-                        <img src="welcome/assets/images/video-thumb-04.png" alt="SEO Work">
-                        <div class="inner-content">
-                          <h4>Fourth Project</h4>
-                          <span>SEO &amp; Advertising</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <div id="contact" class="contact-us section">
     <div class="container">

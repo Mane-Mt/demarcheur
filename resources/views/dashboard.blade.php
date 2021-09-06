@@ -87,6 +87,7 @@
                               <table class="table align-items-center table-flush">
                                 <thead class="thead-light">
                                   <tr>
+                                    <th scope="col" class="sort" data-sort="name">Type d'annonce</th>
                                     <th scope="col" class="sort" data-sort="name">Type de Chambre</th>
                                     <th scope="col" class="sort" data-sort="budget">Description</th>
                                     <th scope="col" class="sort" data-sort="completion">Quartier</th>
@@ -102,18 +103,24 @@
                                     @foreach ($annonces as $annonce)
                                     {{-- {{dd($annonce)}} --}}
                                     <tr>
-                                        <th scope="row">
+                                        <td scope="row">
                                           <div class="media align-items-center">
-                                            <a href="#" class="avatar rounded-circle mr-3">
-                                              <img alt="Image placeholder" src="../assets/img/theme/bootstrap.jpg">
-                                            </a>
+
+                                            @if ($annonce->annonceType == 'Offre')
+                                            <i class="fa fa-check-circle  text-success" aria-hidden="true" style="font-size: 3rem" ></i>
+                                            @else
+                                            <i class="fa fa-question-circle  text-danger" aria-hidden="true" style="font-size: 3rem"  ></i>
+                                            @endif
                                             <div class="media-body">
-                                              <span class="name mb-0 text-sm">{{$annonce->type}}</span>
+                                              <span class="name mb-0 text-sm">{{$annonce->annonceType}}</span>
                                             </div>
                                           </div>
-                                        </th>
+                                        </td>
                                         <td class="budget">
-                                            {{$annonce->description}}
+                                            {{$annonce->type}}
+                                        </td>
+                                        <td class="budget">
+                                            {{ Str::substr($annonce->description, 0, 50).'...' }}
                                         </td>
                                         <td class="budget">
                                             {{$annonce->quartier}}

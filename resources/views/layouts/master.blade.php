@@ -13,14 +13,15 @@
     <title>Miabe Demarcheur</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="welcome/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ asset('welcome/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
 
 
     <!-- Additional CSS Files -->
-    <link rel="stylesheet" href="welcome/assets/css/fontawesome.css">
-    <link rel="stylesheet" href="welcome/assets/css/templatemo-onix-digital.css">
-    <link rel="stylesheet" href="welcome/assets/css/animated.css">
-    <link rel="stylesheet" href="welcome/assets/css/owl.css">
+    <link rel="stylesheet" href="{{asset('welcome/assets/css/fontawesome.css') }}">
+    <link rel="stylesheet" href="{{asset('welcome/assets/css/templatemo-onix-digital.css') }}">
+    <link rel="stylesheet" href="{{asset('welcome/assets/css/animated.css') }}">
+    <link rel="stylesheet" href="{{asset('welcome/assets/css/owl.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css')}}">
 <!--
 
 TemplateMo 565 Onix Digital
@@ -52,20 +53,28 @@ https://templatemo.com/tm-565-onix-digital
         <div class="col-12">
           <nav class="main-nav">
             <!-- ***** Logo Start ***** -->
-            <a href="index.html" class="logo">
-              <img src="welcome/assets/images/logo.png">
+            <a href="{{route('welcome')}}" class="logo">
+              <img src="{{asset('welcome/assets/images/logo.png')}}">
             </a>
             <!-- ***** Logo End ***** -->
             <!-- ***** Menu Start ***** -->
             <ul class="nav">
-              <li class="scroll-to-section"><a href="#top" class="active">Accueil</a></li>
-              <li class="scroll-to-section"><a href="#services">Demandes</a></li>
+              <li class=""><a href="{{route('welcome')}}#top" class="active">Accueil</a></li>
+              {{-- <li class="scroll-to-section"><a href="#services">Demandes</a></li>
               <li class="scroll-to-section"><a href="#about">A propos</a></li>
-              <li class="scroll-to-section"><a href="#portfolio">Annonces</a></li>
-              <li class="scroll-to-section"><a href="#video">Videos</a></li>
+              <li class="scroll-to-section"><a href="#portfolio">Offres</a></li> --}}
+              <li class=""><a href="{{route('welcome')}}#video">Categories</a></li>
+              <li ><a href="{{route('annonces.index')}}">Annonces</a></li>
               <li class="scroll-to-section"><a href="#contact">Contacts</a></li>
-              <li class="scroll-to-section"><a href="{{ route('register') }}">S'inscrire</a></li>
-              <li class="scroll-to-section"><div class="main-red-button-hover"><a href="{{ route('login') }}">Se connecter</a></div></li>
+              @guest
+              <li ><a href="{{ route('register') }}">S'inscrire</a></li>
+              <li ><div class="main-red-button-hover"><a href="{{ route('login') }}">Se connecter</a></div></li>
+              @endguest
+              @auth
+              <li ><div class="main-red-button-hover"><a href="{{ route('home') }}">Dashboard</a></div></li>
+              @endauth
+
+
             </ul>
             <a class='menu-trigger'>
                 <span>Menu</span>
@@ -80,12 +89,12 @@ https://templatemo.com/tm-565-onix-digital
     @yield('content')
 
   <!-- Scripts -->
-  <script src="welcome/vendor/jquery/jquery.min.js"></script>
-  <script src="welcome/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="welcome/assets/js/owl-carousel.js"></script>
-  <script src="welcome/assets/js/animation.js"></script>
-  <script src="welcome/assets/js/imagesloaded.js"></script>
-  <script src="welcome/assets/js/custom.js"></script>
+  <script src="{{asset('welcome/vendor/jquery/jquery.min.js') }}"></script>
+  <script src="{{asset('welcome/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+  <script src="{{asset('welcome/assets/js/owl-carousel.js') }}"></script>
+  <script src="{{asset('welcome/assets/js/animation.js') }}"></script>
+  <script src="{{asset('welcome/assets/js/imagesloaded.js') }}"></script>
+  <script src="{{asset('welcome/assets/js/custom.js') }}"></script>
 
   <script>
   // Acc

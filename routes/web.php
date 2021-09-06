@@ -39,8 +39,8 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'App\Http\Controllers\ProfileController@password']);
 });
 
-Route::resource('annonces', 'App\Http\Controllers\AnnonceController')->except(['index']);
-Route::get('/annonces/{usertypes?}', 'App\Http\Controllers\AnnonceController@index')->name('annonces.index');
+Route::resource('/annonces', 'App\Http\Controllers\AnnonceController')->except(['index']);
+Route::get('/annonces-list/{usertype?}', 'App\Http\Controllers\AnnonceController@index')->name('annonces.index');
 
 ####################################################p########################
 #							Partie Artisan 								   #

@@ -30,29 +30,48 @@
                         <tr>
                             <th scope="col">Name</th>
                             <th scope="col">Email</th>
+                            <th scope="col">Type d'utilisateur</th>
                             <th scope="col">Creation Date</th>
                             <th scope="col"></th>
                         </tr>
                     </thead>
                     <tbody>
-                                                            <tr>
-                                <td>Admin Admin</td>
-                                <td>
-                                    <a href="mailto:admin@argon.com">admin@argon.com</a>
-                                </td>
-                                <td>12/02/2020 11:00</td>
-                                <td class="text-right">
-                                    <div class="dropdown">
-                                        <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="fas fa-ellipsis-v"></i>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                                                                                    <a class="dropdown-item" href="">Edit</a>
-                                                                                            </div>
+                        @forelse ($users as $user)
+                        <tr>
+
+                            <td>
+                                <div class="media align-items-center">
+                                    <a href="#" class="avatar rounded-circle mr-3">
+                                      <img alt="Image placeholder" src="../assets/img/theme/react.jpg">
+                                    </a>
+                                    <div class="media-body">
+                                      <span class="name mb-0 text-sm">{{$user->name}}</span>
                                     </div>
+                                  </div>
                                 </td>
-                            </tr>
-                                                    </tbody>
+                            <td>
+                                <a href="mailto:{{$user->email}}">{{$user->email}}</a>
+                            </td>
+                            <td>
+                              {{$user->usertype}}
+                            </td>
+                            <td>{{$user->created_at}}</td>
+                            <td class="text-right">
+                                <div class="dropdown">
+                                    <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="fas fa-ellipsis-v"></i>
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                                            <a class="dropdown-item" href="{{ route('user.edit',$user->id)}}">Edit</a>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        @empty
+
+                        @endforelse
+
+                     </tbody>
                 </table>
             </div>
             <div class="card-footer py-4">

@@ -1,0 +1,37 @@
+.box
+{
+    background-color: #fff !important;
+    box-shadow: 0 0 0 1px #E2E9ED !important;
+    padding:20px 5px !important;
+    z-index: 0 !important;
+    transition: 0.2s all !important;
+    box-shadow: 1px 2px 5px rgba(0,0,0,0.2) !important;
+
+}
+
+.box:hover{
+    z-index:1 !important;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3) !important;
+    transform: scale(1.05) !important;
+}
+
+.annonce > ul > li:before{
+        /* box-sizing: border-box; */
+        content: ' ';
+        background-image: url(data:image/svg+xml;charset=utf,%3Csvg%20viewBox%3D%220%200%2012%2011%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%20%3Cpath%20d%3D%22M2.97%2010.002l.848%201.011%208.061-9.61-.848-1.011-8.061%209.61zM0%206.462l2.97%203.54.848-1.012-2.97-3.54L0%206.46z%22%20fill%3D%22%231789d5%22%20fill-rule%3D%22evenodd%22%2F%3E%20%3C%2Fsvg%3E);
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: 12px 12px;
+        font-size: 21px;
+        display: -webkit-inline-flex;
+        display: inline-flex;
+        margin-left: 3px;
+        margin-right: 6px;
+        width:10px;
+        height: 10px;
+}
+
+.btn-circle
+{
+    border-radius:20px!important
+}
