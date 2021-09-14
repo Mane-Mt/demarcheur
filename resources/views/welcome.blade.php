@@ -80,55 +80,32 @@
                     <div class="icon"><img src="welcome/assets/images/service-icon-03.png" alt=""></div>
                     <p>{{ Str::substr($request_annonce->description, 0, 100).'...' }}</p>
                     <div class="text-left">
-                        <button class="btn btn-primary btn-sm" style="border-radius:20px!important">
+                        {{-- <button class="btn btn-primary btn-sm" style="border-radius:20px!important">
                             detail
-                        </button>
-                        {{-- <button class="btn btn-success btn-sm" style="border-radius:20px!important">
-                        Saisir
                         </button> --}}
+                        <button type="button" class="btn btn-primary btn-sm btn-circle" data-bs-toggle="modal" data-bs-target="#requestModal{{$request_annonce->id}}">
+                            Detail
+                          </button>
 
-                        <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-    Launch demo modal
-  </button>
+                          <!-- Modal -->
+                          <div class="modal fade" id="requestModal{{$request_annonce->id}}" tabindex="-1" aria-labelledby="requestModal{{$request_annonce->id}}Label" aria-hidden="true">
+                            <div class="modal-dialog">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title" id="requestModal{{$request_annonce->id}}Label">Modal title</h5>
+                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                  ...
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                  <button type="button" class="btn btn-primary">Save changes</button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
 
-  <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          ...
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-                        @component('components.btn-modal')
-                        @slot('actionTitle') Supprimer @endslot
-                        @slot('btnName')Details @endslot
-                        @slot('class')btn-success btn-sm btn-circle @endslot
-                        @slot('modalId')detail{{$request_annonce->id}} @endslot
-                        @slot('modalTitle')Test Title @endslot
-                        @slot('modalBody')
-                        <div class="text-center ">
-                            <i class="far fa-6x fa-question-circle text-danger"></i>
-                            <h5>Voulez vous réllement supprimer cet utilisateur? </h5>
-                        </div>
-                        @endslot
-                        @slot('link'){{ route('annonces.index',$request_annonce->id) }}@endslot
-                        @slot('submitMethod') DELETE @endslot
-                        @slot('saveBtnColor') danger @endslot
-                        @slot('savebtnTitle') Supprimer @endslot
-                    @endcomponent
                     </div>
                 </div>
 
@@ -142,28 +119,7 @@
 
 
                 </div>
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    Launch demo modal
-                  </button>
 
-                  <!-- Modal -->
-                  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                          ...
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                          <button type="button" class="btn btn-primary">Save changes</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
 
                 <div class="text-center">
                     <a href="{{route('annonces.index','Demande')}}" class="btn btn-circle btn-danger">Voir plus de demande</a>
@@ -268,7 +224,7 @@
                         <span>{{$offer_annonce->type}}</span><br>
                         <span>Quartier <b>{{$offer_annonce->quartier}}</b> </span> <br>
                         <span>{{ Str::substr($offer_annonce->description, 0, 20).'....'}}</span>
-                      <a rel="sponsored" href="https://templatemo.com/tm-564-plot-listing" target="_parent"><h4>Detail</h4></a>
+                      <a rel="sponsored" href="{{route('annonces.show',$offer_annonce->id)}}" target="_parent"><h4>Detail</h4></a>
 
                     </div>
                   </div>
@@ -421,8 +377,9 @@
                             {{-- <iframe width="100%" height="auto" src="https://www.youtube.com/embed/JynGuQx4a1Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> --}}
                             <img src="{{asset('images/'.$villa_annonce->photo1)}}" alt="" srcset="">
                             <div class="overlay-effect">
-                              <a href="#"><h4>Villa</h4></a>
-                              <span>SEO &amp; Marketing</span>
+                                <a href="#"><h4>{{$villa_annonce->type}}</h4></a>
+                                <span>{{$villa_annonce->quartier}}</span> <br>
+                                <span> <a href="{{route('annonces.show',$villa_annonce->id)}}">Detail</a> </span>
                             </div>
                           </div>
                         </div>
@@ -438,8 +395,9 @@
                             {{-- <iframe width="100%" height="auto" src="https://www.youtube.com/embed/JynGuQx4a1Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> --}}
                             <img src="{{asset('images/'.$deux_chambre_annonce->photo1)}}" alt="" srcset="">
                             <div class="overlay-effect">
-                              <a href="#"><h4>Villa</h4></a>
-                              <span>SEO &amp; Marketing</span>
+                              <a href="#"><h4>{{$deux_chambre_annonce->type}}</h4></a>
+                              <span>{{$deux_chambre_annonce->quartier}}</span> <br>
+                              <span> <a href="{{route('annonces.show',$deux_chambre_annonce->id)}}">Detail</a> </span>
                             </div>
                           </div>
                         </div>
@@ -455,8 +413,9 @@
                             {{-- <iframe width="100%" height="auto" src="https://www.youtube.com/embed/JynGuQx4a1Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> --}}
                             <img src="{{asset('images/'.$chambre_salon_annonce->photo1)}}" alt="" srcset="">
                             <div class="overlay-effect">
-                              <a href="#"><h4>Villa</h4></a>
-                              <span>SEO &amp; Marketing</span>
+                                <a href="#"><h4>{{$chambre_salon_annonce->type}}</h4></a>
+                                <span>{{$chambre_salon_annonce->quartier}}</span> <br>
+                                <span> <a href="{{route('annonces.show',$chambre_salon_annonce->id)}}">Detail</a> </span>
                             </div>
                           </div>
                         </div>
@@ -472,8 +431,9 @@
                             {{-- <iframe width="100%" height="auto" src="https://www.youtube.com/embed/JynGuQx4a1Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> --}}
                             <img src="{{asset('images/'.$une_piece_annonce->photo1)}}" alt="" srcset="">
                             <div class="overlay-effect">
-                              <a href="#"><h4>Villa</h4></a>
-                              <span>SEO &amp; Marketing</span>
+                                <a href="#"><h4>{{$une_piece_annonce->type}}</h4></a>
+                                <span>{{$une_piece_annonce->quartier}}</span> <br>
+                                <span> <a href="{{route('annonces.show',$une_piece_annonce->id)}}">Detail</a> </span>
                             </div>
                           </div>
                         </div>

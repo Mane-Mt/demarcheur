@@ -26,6 +26,12 @@ class AnnonceController extends Controller
     public function create(){
         return view('annonces.create');
     }
+
+    public function show($id){
+        $data['annonce'] = Annonce::find($id);
+
+        return view('annonces.detail',$data);
+    }
     public function saveannonce(Request $request)
     {
 

@@ -48,7 +48,7 @@ https://templatemo.com/tm-565-onix-digital
 
   <!-- ***** Header Area Start ***** -->
   <header class="header-area header-sticky wow slideInDown" data-wow-duration="0.75s" data-wow-delay="0s">
-    <div class="container">
+    <div class="container-fluid">
       <div class="row">
         <div class="col-12">
           <nav class="main-nav">
@@ -60,15 +60,16 @@ https://templatemo.com/tm-565-onix-digital
             <!-- ***** Menu Start ***** -->
             <ul class="nav">
               <li class=""><a href="{{route('welcome')}}#top" class="active">Accueil</a></li>
-              {{-- <li class="scroll-to-section"><a href="#services">Demandes</a></li>
+              <li class="scroll-to-section"><a href="#services">Demandes</a></li>
               <li class="scroll-to-section"><a href="#about">A propos</a></li>
-              <li class="scroll-to-section"><a href="#portfolio">Offres</a></li> --}}
+              <li class="scroll-to-section"><a href="#portfolio">Offres</a></li>
               <li class=""><a href="{{route('welcome')}}#video">Categories</a></li>
               <li ><a href="{{route('annonces.index')}}">Annonces</a></li>
               <li class="scroll-to-section"><a href="#contact">Contacts</a></li>
+              {{-- <li><a href="{{ route('login') }}" class="main-red-button-hover">Se connecter</a></li> --}}
               @guest
               <li ><a href="{{ route('register') }}">S'inscrire</a></li>
-              <li ><div class="main-red-button-hover"><a href="{{ route('login') }}">Se connecter</a></div></li>
+              <li><a href="{{ route('login') }}" class="main-red-button-hover">Se connecter</a></li>
               @endguest
               @auth
               <li ><div class="main-red-button-hover"><a href="{{ route('home') }}">Dashboard</a></div></li>

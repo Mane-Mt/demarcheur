@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('content')
-<div class="container" style="margin-top: 8%!important">
+<div class="container">
    {{-- <div class="row">
     <div class="tables-left-dec">
         <img src="welcome/assets/images/tables-left-dec.png" alt="">
@@ -31,37 +31,66 @@
                     </ul>
                 </div>
                 <div class="col-lg-2 col-sm-12 text-center text-lg-right">
-                    <button class="btn btn-warning btn-sm-block btn-circle mt-lg-1 mx-lg-0 mt-xs-5 " >
-                        Details
-                    </button>
-                    <button class="btn btn-success btn-sm-block btn-circle mt-lg-1 mt-xs-5 " >
-                   Postuler
-                    </button>
 
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal{{$annonce->id}}">
-                        Launch demo modal
+
+                    <button type="button" class="btn btn-success btn-sm-block btn-circle mt-lg-1 mt-xs-5 " data-bs-toggle="modal" data-bs-target="#exampleModal{{$annonce->id}}">
+                        Postuler
                       </button>
 
                       <!-- Modal -->
                       <div class="modal fade" id="exampleModal{{$annonce->id}}" tabindex="-1" aria-labelledby="exampleModal{{$annonce->id}}Label" aria-hidden="true">
-                        <div class="modal-dialog">
+                        <div class="modal-dialog modal-dialog-centered">
                           <div class="modal-content">
                             <div class="modal-header">
-                              <h5 class="modal-title" id="exampleModal{{$annonce->id}}Label">Modal title</h5>
+                              <h5 class="modal-title" id="exampleModal{{$annonce->id}}Label">Saisie de l'annonce</h5>
                               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
                               Numero du posteur : {{ $annonce->user->name}}
                             </div>
                             <div class="modal-footer">
-                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                              <button type="button" class="btn btn-primary">Save changes</button>
+                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Ok</button>
+
                             </div>
                           </div>
                         </div>
                       </div>
 
-                    <!-- Button trigger modal -->
+                      @if ($annonce->annonceType == 'Offre')
+                      <a href="{{route('annonces.show',$annonce->id)}}" class="btn btn-warning btn-sm-block btn-circle mt-lg-1 mx-lg-0 mt-xs-5" >
+                        Details
+                      </a>
+                      @else
+                      <button type="button" class="btn btn-warning btn-sm-block btn-circle mt-lg-1 mx-lg-0 mt-xs-5" data-bs-toggle="modal" data-bs-target="#detailModal{{$annonce->id}}">
+                        Details
+                      </button>
+
+                      <!-- Modal -->
+                      <div class="modal fade" id="detailModal{{$annonce->id}}" tabindex="-1" aria-labelledby="detailModal{{$annonce->id}}Label" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="detailModal{{$annonce->id}}Label">Detail de l'annonce</h5>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body overflow-auto">
+                                Type de chambre: <b>{{ $annonce->type}}</b> <br>
+                               Quartier: <b>{{ $annonce->quartier}} </b> <br>
+                                Detail : <b>{{ $annonce->description}}
+                                    <span class="text-center">Image : </span>
+                                  <img src="{{asset('images/'.$annonce->photo1)}}" alt="" srcset="">
+                                </b>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                              <button type="button" class="btn btn-primary"  data-bs-dismiss="modal" data-bs-toggle="modal"  data-bs-target="#exampleModal{{$annonce->id}}">Postuler/Saisir</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      @endif
+
 
                 </div>
             </div>
@@ -69,11 +98,10 @@
 
             <div class="item">
         Ooops ! desolé.... Nous n'avons pas d'annonce  pour vous
+                <img src="{{asset('assets/img/default/oops.jpg')}}" alt="" srcset="">
             </div>
       @endforelse
-    </div>
-   </div>
-</div>
+
 
 
 @endsection

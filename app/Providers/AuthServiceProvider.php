@@ -26,7 +26,7 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies();
 
         Gate::define('isAdmin',function(){
-          return  auth()->user()->usertpype == 'Admin';
+          return  auth()->user()->usertype == 'Admin';
         });
         Gate::define('isDemarcheur',function(){
            return auth()->user()->usertype == 'Demarcheur';

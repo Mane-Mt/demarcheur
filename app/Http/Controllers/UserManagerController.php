@@ -1,12 +1,9 @@
-<?php
-
+ <?php
 namespace App\Http\Controllers;
-
 use Illuminate\Support\Facades\Hash;
 use App\Models\userManager;
 use Illuminate\Http\Request;
 use App\Models\User;
-
 
 class UserManagerController extends Controller
 {
@@ -38,7 +35,7 @@ class UserManagerController extends Controller
         $confirm = $request->input('confirm');
 
         if ($request->input('password') == $request->input('confirm')){
-           $users->save(); 
+           $users->save();
            $message = 'your successfuly save user '.$users->name;
             return redirect('/admin/addUser')->with('success', $message);
         }else{
@@ -47,7 +44,7 @@ class UserManagerController extends Controller
         }
     }
 
-    
+
 
     /**
      * Show the form for creating a new resource.
@@ -66,7 +63,7 @@ class UserManagerController extends Controller
         //
         $users = User::findOrFail($id);
         return view('adminLte.editUser')->with('users', $users);
-        
+
     }
 
     /**
