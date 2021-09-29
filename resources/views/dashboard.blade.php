@@ -168,12 +168,21 @@
                                               <i class="fas fa-ellipsis-v"></i>
                                             </a>
                                             <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                              <a class="dropdown-item" href="#" class="btn btn-info btn-icon btn-sm " >
+                                              <a class="dropdown-item" href="{{route('annonces.edit',$annonce->id)}}" class="btn btn-info btn-icon btn-sm " >
                                                 <i class="ni ni-circle-08 pt-1"></i> Modifier</a>
-                                              <a class="dropdown-item" href="#" class="btn btn-danger btn-icon btn-sm " >
-                                                <i class="ni ni-fat-remove pt-1"></i> Supprimer
-                                                </a>
+                                                <form method="post" action="{{ route('annonces.destroy',[$annonce->id])}}" >
+                                                    {{ csrf_field() }}
+                                                    {{ method_field('DELETE') }}
+                                                    <a class="dropdown-item"class="btn btn-danger btn-icon btn-sm "  href="javascript:void(0);" onclick="$(this).closest('form').submit();" >
+                                                        <i class="ni ni-fat-remove pt-1"></i> Supprimer
+                                                    </a>
+                                                </form>
+                                                {{-- <form method="post" action="{{ route('annonces.destroy',[ $annonce->id] )}}">
 
+                                                    {{ csrf_field() }}
+                                                    {{ method_field('DELETE') }}
+                                                <a class="dropdown-item text-danger" href="javascript:void(0);" onclick="$(this).closest('form').submit();"><i class="dw dw-delete-3"></i> Supprimer</a>
+                                                </form> --}}
                                               {{-- <button type="button" rel="tooltip" class="btn btn-info btn-icon btn-sm " data-original-title="" title="">
                                                 <i class="ni ni-circle-08 pt-1"></i>
                                               </button><br>

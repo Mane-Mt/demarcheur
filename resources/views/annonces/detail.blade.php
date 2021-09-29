@@ -3,8 +3,8 @@
 
 @section('content')
     <div class="container-fluid">
-        <div class="box row pd-3">
-            <div class="col-8">
+        <div class="row pd-3 " style="margin-top: 7%">
+            <div class="col-8 box">
                 <div><b>Type de chambre : </b> {{ $annonce->type}}</div>
             <div><b>Quartier : </b> {{ $annonce->quartier}}</div>
             <p>

@@ -86,14 +86,14 @@
 
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('profile.edit') }}">
-                        <i class="fab fa-laravel" style="color: #f4645f;"></i><i class="ni ni-circle-08 text-pink"></i>{{ __('Profile') }}
+                       <i class="ni ni-circle-08 text-pink"></i>{{ __('Profile') }}
                     </a>
                 </li>
 
                 @can('isAdmin')
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('user.index') }}">
-                        {{ __('Gestion des utilisateurs') }}
+                        <i class="fab fa-laravel" style="color: #f4645f;"></i> {{ __('Gestion des utilisateurs') }}
                     </a>
                 </li>
                 {{-- <li class="nav-item">
