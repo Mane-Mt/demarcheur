@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-    <title>Miabe Demarcheur</title>
+    <title>{{env('APP_NAME')}}</title>
 
     <!-- Bootstrap core CSS -->
     <link href="{{ asset('welcome/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
@@ -54,22 +54,20 @@ https://templatemo.com/tm-565-onix-digital
           <nav class="main-nav">
             <!-- ***** Logo Start ***** -->
             <a href="{{route('welcome')}}" class="logo">
-              <img src="{{asset('welcome/assets/images/logo.png')}}">
+              <img src="{{asset(env('APP_LOGO'))}}" width="auto" height="70">
             </a>
             <!-- ***** Logo End ***** -->
             <!-- ***** Menu Start ***** -->
             <ul class="nav">
               <li class=""><a href="{{route('welcome')}}#top" class="active">Accueil</a></li>
-              <li class="scroll-to-section"><a href="#services">Demandes</a></li>
-              <li class="scroll-to-section"><a href="#about">A propos</a></li>
-              <li class="scroll-to-section"><a href="#portfolio">Offres</a></li>
+              <li class=""><a href="{{route('welcome')}}#services">Demandes</a></li>
+              <li class=""><a href="{{route('welcome')}}#about">A propos</a></li>
+              <li class=""><a href="{{route('welcome')}}#portfolio">Offres</a></li>
               <li class=""><a href="{{route('welcome')}}#video">Categories</a></li>
               <li ><a href="{{route('annonces.index')}}">Annonces</a></li>
-              <li class="scroll-to-section"><a href="#contact">Contacts</a></li>
-              {{-- <li><a href="{{ route('login') }}" class="main-red-button-hover">Se connecter</a></li> --}}
+              <li class=""><a href="{{route('welcome')}}#contact">Contacts</a></li>
               @guest
-              <li ><a href="{{ route('register') }}">S'inscrire</a></li>
-              <li><a href="{{ route('login') }}" class="main-red-button-hover">Se connecter</a></li>
+                <li> <div class="main-red-button-hover" ><a href="{{ route('login') }}">Se connecter</a></div></li>
               @endguest
               @auth
               <li ><div class="main-red-button-hover"><a href="{{ route('home') }}">Dashboard</a></div></li>
@@ -96,6 +94,8 @@ https://templatemo.com/tm-565-onix-digital
   <script src="{{asset('welcome/assets/js/animation.js') }}"></script>
   <script src="{{asset('welcome/assets/js/imagesloaded.js') }}"></script>
   <script src="{{asset('welcome/assets/js/custom.js') }}"></script>
+
+  @yield('js')
 
   <script>
   // Acc

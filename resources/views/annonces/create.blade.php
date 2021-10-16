@@ -12,7 +12,7 @@
                 </div>
                 {{-- {{dd(auth()->user()->usertype)}} --}}
                 <div class="container col-md-9 col-offset-5 ">
-                    <form action="/saveannonce" method="POST" enctype="multipart/form-data" >
+                    <form action="{{ route('annonces.store')}}" method="POST" enctype="multipart/form-data" >
                         @csrf
                         <div class="card">
                             <!-- Main content -->
@@ -47,13 +47,36 @@
                                                 </select>
                                             </div>
                                         </div>
+
+                                        <div class="form-group row">
+                                            <label for="country" class="col-md-3">Pays</label>
+                                            <div class="col-md-9">
+                                                <input class="form-control" id="inputGroupSelect01" name="country" required>
+                                            </div>
+                                        </div>
+
                                         <!-- pour taper le quartier dans lequel l'on cherche la chambre à louer -->
-                                            <div class="form-group row">
+                                        <div class="form-group row">
+                                            <label for="town" class="col-md-3">Ville</label>
+                                            <div class="col-md-9">
+                                                <input class="form-control" id="inputGroupSelect01" name="town" required>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
                                             <label for="quartier" class="col-md-3">Quartier</label>
                                             <div class="col-md-9">
                                                 <input class="form-control" id="inputGroupSelect01" name="quartier" required>
                                             </div>
                                         </div>
+
+                                        <div class="form-group row">
+                                            <label for="price" class="col-md-3">budget / Prix</label>
+                                            <div class="col-md-9">
+                                                <input class="form-control" id="inputGroupSelect01" name="price" required>
+                                            </div>
+                                        </div>
+
                                         <div class="form-group row">
                                             <label for="description" class="col-md-3">Description</label>
                                             <div class="col-md-9">

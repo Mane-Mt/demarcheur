@@ -1,19 +1,16 @@
 @extends('layouts.master')
 @section('content')
 <div class="container">
-   {{-- <div class="row">
-    <div class="tables-left-dec">
-        <img src="welcome/assets/images/tables-left-dec.png" alt="">
-      </div>
-      <div class="tables-right-dec">
-        <img src="welcome/assets/images/tables-right-dec.png" alt="">
-      </div> --}}
+
+   <div class="row mt-lg-3">
+
+
     <div class="col-lg-8">
          @forelse ($annonces as $annonce)
             <div class="row my-3 box ">
-                <div class="col-lg-1 col-sm-12 text-center text-lg-right">
+                <div class="col-lg-2 col-sm-12 text-center text-lg-right">
                     @if ($annonce->annonceType == 'Offre')
-                    <i class="fa fa-check-circle fa-10x text-success" aria-hidden="true" style="font-size: 3.5rem" ></i>
+                    <div class=""><img src="{{asset('images/'.$annonce->photo1)}}" alt="" > </div>
                     @else
                     <i class="fa fa-question-circle fa-10x text-danger" aria-hidden="true" style="font-size: 3.5rem"  ></i>
                     @endif
@@ -23,11 +20,11 @@
                 {{-- <div class="col-8">
                     {{$annonce->type}}, dans le quartier de {{ $annonce->quartier}}, {{ Str::substr($annonce->description, 0, 100).'...' }}
                 </div> --}}
-                <div class="col-lg-8 col-sm-12 annonce overflow-hidden">
+                <div class="col-lg-8 col-sm-12 annonce ">
                     <ul>
                         <li><b>{{$annonce->type}}</b></li>
                         <li>Quartier de <b>{{ $annonce->quartier}}</b></li>
-                        <li>{{ Str::substr($annonce->description, 0,20).'...' }}</li>
+                        <li class="overflow-hidden">{{ Str::substr($annonce->description, 0,200).'...' }}</li>
                     </ul>
                 </div>
                 <div class="col-lg-2 col-sm-12 text-center text-lg-right">
@@ -46,7 +43,7 @@
                               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                              Numero du posteur : {{ $annonce->user->name}}
+                              Numero du posteur : {{ $annonce->user->phone}}
                             </div>
                             <div class="modal-footer">
                               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Ok</button>
@@ -101,7 +98,14 @@
                 <img src="{{asset('assets/img/default/oops.jpg')}}" alt="" srcset="">
             </div>
       @endforelse
+    </div>
 
+    <div class="col-lg-4 mt-3">
+        {{-- <input type="search" name="search" class="form-control" id="search" style="border-radius: 15px; border: 2px solid blue;" placeholder="search"> --}}
+    </div>
+
+
+   </div>
 
 
 @endsection

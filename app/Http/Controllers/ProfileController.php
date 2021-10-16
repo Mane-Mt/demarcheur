@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileRequest;
 use App\Http\Requests\PasswordRequest;
+use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
@@ -26,13 +27,17 @@ class ProfileController extends Controller
      */
     public function update(ProfileRequest $request)
     {
-        if (auth()->user()->id == 1) {
-            return back()->withErrors(['not_allow_profile' => __('You are not allowed to change data for a default user.')]);
-        }
+        // if (auth()->user()->id == 1) {
+        //     return back()->withErrors(['not_allow_profile' => __('You are not allowed to change data for a default user.')]);
+        // }
+        $user = User::findOrFail($request->id);
 
-        auth()->user()->update($request->all());
+        $user->name  = $request->name;
+        $user->email  = $request->email;
+        $user->phone = $request->phone;
+        $user->save();
 
-        return back()->withStatus(__('Profile successfully updated.'));
+        return back()->withStatus(__('Profil Modifié avec succès'));
     }
 
     /**
@@ -43,12 +48,12 @@ class ProfileController extends Controller
      */
     public function password(PasswordRequest $request)
     {
-        if (auth()->user()->id == 1) {
-            return back()->withErrors(['not_allow_password' => __('You are not allowed to change the password for a default user.')]);
-        }
+        // if (auth()->user()->id == 1) {
+        //     return back()->withErrors(['not_allow_password' => __('You are not allowed to change the password for a default user.')]);
+        // }
 
         auth()->user()->update(['password' => Hash::make($request->get('password'))]);
 
-        return back()->withPasswordStatus(__('Password successfully updated.'));
+        return back()->withPasswordStatus(__('Mots de Passe Modifié avec succès'));
     }
 }

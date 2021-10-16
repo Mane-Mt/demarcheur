@@ -9,7 +9,7 @@
             <div class="col-lg-6 align-self-center">
               <div class="owl-carousel owl-banner">
                 <div class="item header-text">
-                  <h6>Miabe Demarcheur</h6>
+                  <h6>{{ env('APP_NAME')}}</h6>
                   <h2>Contactez nous pour <em>Devenir</em> un <span>Demarcheur</span></h2>
                   <p>Avoir un compte demarcheur vous permettra de toucher un grand public pour vos annonces</p>
                   <div class="down-buttons">
@@ -17,33 +17,33 @@
                       <a href="#contact">Message Us Now</a>
                     </div>
                     <div class="call-button">
-                      <a href="#"><i class="fa fa-phone"></i> 010-020-0340</a>
+                      <a href="#"><i class="fa fa-whatsapp"></i> +228 70888992</a>
                     </div>
                   </div>
                 </div>
                 <div class="item header-text">
-                  <h6>Miabe Demarcheur</h6>
+                  <h6>{{ env('APP_NAME')}}</h6>
                   <h2>Voulez vous <em>publier</em> une <span>annonce</span> ?</h2>
                   <p>Veuillez créer un compte ou contacter nous...</p>
                   <div class="down-buttons">
                     <div class="main-blue-button-hover">
-                      <a href="#services">Our Services</a>
+                      <a href="#pricing">Nos services</a>
                     </div>
                     <div class="call-button">
-                      <a href="#"><i class="fa fa-phone"></i> 090-080-0760</a>
+                      <a href="#"><i class="fa fa-phone"></i> +228 70888992</a>
                     </div>
                   </div>
                 </div>
                 <div class="item header-text">
-                  <h6>Miabe Demarcheur</h6>
-                  <h2><em>BIENVENUE</em> sur <span>MIABE DEMARCHEUR</span></h2>
-                  <p>Please <a rel="nofollow" href="https://www.paypal.me/templatemo" target="_blank">support us</a> a little via PayPal if this digital marketing HTML template is useful for you. Thank you.</p>
+                  <h6>{{ env('APP_NAME')}}</h6>
+                  <h2><em>BIENVENUE</em> sur <span>{{ env('APP_NAME')}}</span></h2>
+                  {{-- <p>Please <a rel="nofollow" href="https://www.paypal.me/templatemo" target="_blank">support us</a> a little via PayPal if this digital marketing HTML template is useful for you. Thank you.</p> --}}
                   <div class="down-buttons">
                     <div class="main-blue-button-hover">
-                      <a href="#video">Watch Videos</a>
+                      <a href="#about">GUide d'utilisation</a>
                     </div>
                     <div class="call-button">
-                      <a href="#"><i class="fa fa-phone"></i> 050-040-0320</a>
+                      <a href="#"><i class="fa fa-facebook"></i> {{ env('APP_NAME')}}</a>
                     </div>
                   </div>
                 </div>
@@ -67,7 +67,7 @@
         <div class="col-lg-8 offset-lg-2">
           <div class="section-heading">
             <h2>Les demande de <em> chambre </em> et <span> locations</span></h2>
-            {{-- <span>LES DEMANDES DES UTILISATEURS</span> --}}
+            <span>Les Demandes</span>
           </div>
         </div>
       </div>
@@ -77,34 +77,14 @@
               @forelse ($request_annonces as $request_annonce)
                 <div class="item">
                     <h5>Recherche d'une maison <b><i>{{$request_annonce->type}}</i></b> , dans le quartier <b>{{$request_annonce->quartier}}</b> </h5>
-                    <div class="icon"><img src="welcome/assets/images/service-icon-03.png" alt=""></div>
+                    <div class="icon mt-2"><img src="welcome/assets/images/service-icon-01.png" alt=""></div>
+                    {{-- <div class="icon"><img src="welcome/assets/images/service-icon-03.png" alt=""></div> --}}
                     <p>{{ Str::substr($request_annonce->description, 0, 100).'...' }}</p>
                     <div class="text-left">
-                        {{-- <button class="btn btn-primary btn-sm" style="border-radius:20px!important">
+                        <a href="{{route('annonces.show',$request_annonce->id)}}" class="btn btn-primary btn-sm btn-circle">
                             detail
-                        </button> --}}
-                        <button type="button" class="btn btn-primary btn-sm btn-circle" data-bs-toggle="modal" data-bs-target="#requestModal{{$request_annonce->id}}">
-                            Detail
-                          </button>
+                        </a>
 
-                          <!-- Modal -->
-                          <div class="modal fade" id="requestModal{{$request_annonce->id}}" tabindex="-1" aria-labelledby="requestModal{{$request_annonce->id}}Label" aria-hidden="true">
-                            <div class="modal-dialog">
-                              <div class="modal-content">
-                                <div class="modal-header">
-                                  <h5 class="modal-title" id="requestModal{{$request_annonce->id}}Label">Modal title</h5>
-                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                  ...
-                                </div>
-                                <div class="modal-footer">
-                                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                  <button type="button" class="btn btn-primary">Save changes</button>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
 
                     </div>
                 </div>
@@ -118,24 +98,16 @@
               @endforelse
 
 
-                </div>
-
-
-                <div class="text-center">
-                    <a href="{{route('annonces.index','Demande')}}" class="btn btn-circle btn-danger">Voir plus de demande</a>
-                    </div>
-
-{{--
-            <div class="item">
-              <h4>Optimizing your websites for Speed</h4>
-              <div class="icon"><img src="welcome/assets/images/service-icon-01.png" alt=""></div>
-              <p>Get to know more about the topic in details</p>
             </div>
-             --}}
 
 
+            {{-- <div class="text-center mt-5">
+                <a href="{{route('annonces.index','Demande')}}" class="btn btn-circle btn-danger">Voir plus de demande</a>
+            </div> --}}
 
-
+            <div class="text-center mt-5">
+                <a href="{{route('annonces.index','Offre')}}" class="btn btn-block btn-lg btn-circle btn-danger">Voir plus d'offre </a>
+            </div>
         </div>
       </div>
     </div>
@@ -151,8 +123,15 @@
         </div>
         <div class="col-lg-6">
           <div class="section-heading">
-            <h2>Les informations sur <em>Miabe Devis</em> &amp; <span>Project</span> Management</h2>
-            <p>You can browse free HTML templates on Too CSS website. Visit the website and explore latest website templates for your projects.</p>
+            <h2>Comment utiliser <em>Miabe</em> <span> Demarcheur</span> ?</h2>
+            <p>
+                <p><em class="text-primary">Publier une annonce</em>.... </p>
+                <ul>
+                    <li>Connectez vous à votre compte ou créer un compte si vous n'en avez pas</li>
+                    <li>Cliquer sur le boutton nouveau sur le tableau de bord et renseigner les informations</li>
+                    <li>Enfin Cliquez sur le button publier</li>
+                </ul>
+            </p>
             <div class="row">
               <div class="col-lg-4">
                 <div class="fact-item">
@@ -160,9 +139,9 @@
                     <div class="icon">
                       <img src="welcome/assets/images/service-icon-01.png" alt="">
                     </div>
-                    <div class="count-digit">320</div>
+                    <div class="count-digit"> {{$users->count()}} </div>
                     <div class="count-title">Utilisateurs</div>
-                    <p>Lorem ipsum dolor sitti amet, consectetur.</p>
+                    {{-- <p>Lorem ipsum dolor sitti amet, consectetur.</p> --}}
                   </div>
                 </div>
               </div>
@@ -172,9 +151,9 @@
                     <div class="icon">
                       <img src="welcome/assets/images/service-icon-02.png" alt="">
                     </div>
-                    <div class="count-digit">640</div>
+                    <div class="count-digit">{{$demarcheurs->count()}}</div>
                     <div class="count-title">Demarcheurs</div>
-                    <p>Lorem ipsum dolor sitti amet, consectetur.</p>
+                    {{-- <p>Lorem ipsum dolor sitti amet, consectetur.</p> --}}
                   </div>
                 </div>
               </div>
@@ -184,13 +163,19 @@
                     <div class="icon">
                       <img src="welcome/assets/images/service-icon-03.png" alt="">
                     </div>
-                    <div class="count-digit">120</div>
+                    <div class="count-digit">{{$annonces->count()}}</div>
                     <div class="count-title">Publications</div>
-                    <p>Lorem ipsum dolor sitti amet, consectetur.</p>
+                    {{-- <p>Lorem ipsum dolor sitti amet, consectetur.</p> --}}
                   </div>
                 </div>
               </div>
             </div>
+
+            <p><em class="text-primary">Postuler à une annonce</em>.... </p>
+                <ul>
+                    <li>Cliquer sur le boutton postuler de l'annonce</li>
+                    <li>Contacter la personne par son numéro de telephone</li>
+                </ul>
           </div>
         </div>
       </div>
@@ -206,7 +191,7 @@
         <div class="col-lg-8 offset-lg-2">
           <div class="section-heading">
             <h2>Les <em>Annonces</em> &amp; des <span>Demarcheurs</span></h2>
-            <span>Our Portfolio</span>
+            <span>Les Offres</span>
           </div>
         </div>
       </div>
@@ -216,20 +201,21 @@
         <div class="col-lg-12">
           <div class="owl-carousel owl-portfolio">
               @forelse ($offer_annonces as $offer_annonce)
-              <div class="item">
-                <div class="thumb">
-                  <img src="{{asset('images/'.$offer_annonce->photo1)}}" alt="" height="600px" width="auto">
-                  <div class="hover-effect">
-                    <div class="inner-content">
-                        <span>{{$offer_annonce->type}}</span><br>
-                        <span>Quartier <b>{{$offer_annonce->quartier}}</b> </span> <br>
-                        <span>{{ Str::substr($offer_annonce->description, 0, 20).'....'}}</span>
-                      <a rel="sponsored" href="{{route('annonces.show',$offer_annonce->id)}}" target="_parent"><h4>Detail</h4></a>
+                <div class="item">
+                    <div class="thumb">
+                    <img src="{{asset('images/'.$offer_annonce->photo1)}}" alt="" height="600px" width="auto">
+                    <div class="hover-effect">
+                        <div class="inner-content">
+                            <span>{{$offer_annonce->type}}</span><br>
+                            <span>Quartier <b>{{$offer_annonce->quartier}}</b> </span> <br>
+                            <span>{{ Str::substr($offer_annonce->description, 0, 20).'....'}}</span><br>
+                        <a rel="sponsored" class="btn btn-primary  btn-circle" href="{{route('annonces.show',$offer_annonce->id)}}" target="_parent">Detail</a>
 
+
+                        </div>
                     </div>
-                  </div>
+                    </div>
                 </div>
-              </div>
               @empty
               <div class="item">
                 Ooops ! desolé.... Nous n'avons pas d'annonce  pour vous
@@ -237,47 +223,11 @@
 
               @endforelse
 
-
-
-            {{-- <div class="item">
-              <div class="thumb">
-                <img src="welcome/assets/images/portfolio-02.jpg" alt="">
-                <div class="hover-effect">
-                  <div class="inner-content">
-                    <a href="#"><h4>Project Two</h4></a>
-                    <span>SEO &amp; Marketing</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="thumb">
-                <img src="welcome/assets/images/portfolio-03.jpg" alt="">
-                <div class="hover-effect">
-                  <div class="inner-content">
-                    <a rel="sponsored" href="https://templatemo.com/tm-562-space-dynamic" target="_parent"><h4>Third Project</h4></a>
-                    <span>Space Dynamic SEO</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-
-            <div class="item">
-              <div class="thumb">
-                <img src="welcome/assets/images/portfolio-04.jpg" alt="">
-                <div class="hover-effect">
-                  <div class="inner-content">
-                    <a href="#"><h4>12th Project</h4></a>
-                    <span>SEO &amp; Marketing</span>
-                  </div>
-                </div>
-              </div>
-            </div> --}}
           </div>
-        <div class="text-center mt-5">
-            <a href="{{route('annonces.index','Offre')}}" class="btn btn-block btn-lg btn-circle btn-danger">Voir plus d'offre </a>
-        </div>
+
+            <div class="text-center mt-5">
+                <a href="{{route('annonces.index','Offre')}}" class="btn btn-block btn-lg btn-circle btn-danger">Voir plus d'offre </a>
+            </div>
 
         </div>
       </div>
@@ -295,15 +245,15 @@
       <div class="row">
         <div class="col-lg-6 offset-lg-3">
           <div class="section-heading">
-            <h2>Select a suitable <em>plan</em> for your next <span>projects</span></h2>
-            <span>Our Plans</span>
+            <h2>Nous <em>proposons</em> d'autres <span>services</span></h2>
+            <span>Nos Services</span>
           </div>
         </div>
       </div>
       <div class="row">
         <div class="col-lg-4">
           <div class="item first-item">
-            <h4>Starter Plan</h4>
+            <h4>Developpement</h4>
             <em>$160/mo</em>
             <span>$140</span>
             <ul>
@@ -319,7 +269,7 @@
         </div>
         <div class="col-lg-4">
           <div class="item second-item">
-            <h4>Standard Plan</h4>
+            <h4>Réseaux</h4>
             <em>$240/mo</em>
             <span>$200</span>
             <ul>
@@ -335,7 +285,7 @@
         </div>
         <div class="col-lg-4">
           <div class="item third-item">
-            <h4>Advanced Plan</h4>
+            <h4>Infographie</h4>
             <em>$360/mo</em>
             <span>$280</span>
             <ul>
@@ -425,6 +375,7 @@
                       @endif
 
                       @if ($une_piece_annonce!= null)
+                      {{-- {{dd($une_piece_annonce->photo1)}} --}}
                       <li>
                         <div>
                           <div class="thumb">
@@ -520,9 +471,10 @@
       <div class="row">
         <div class="col-lg-7">
           <div class="section-heading">
-            <h2>Feel free to <em>Contact</em> us via the <span>HTML form</span></h2>
+            <h2>Nous <em>Contacter</em> <span>!</span></h2>
             <div id="map">
-              <iframe src="https://maps.google.com/maps?q=Av.+L%C3%BAcio+Costa,+Rio+de+Janeiro+-+RJ,+Brazil&t=&z=13&ie=UTF8&iwloc=&output=embed" width="100%" height="360px" frameborder="0" style="border:0" allowfullscreen=""></iframe>
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.574391019117!2d1.1908113147689825!3d6.187666695520455!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNsKwMTEnMTUuNiJOIDHCsDExJzM0LjgiRQ!5e0!3m2!1sfr!2stg!4v1633451403792!5m2!1sfr!2stg" width="100%" height="360px" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+              {{-- <iframe src="https://maps.google.com/maps?q=Av.+L%C3%BAcio+Costa,+Rio+de+Janeiro+-+RJ,+Brazil&t=&z=13&ie=UTF8&iwloc=&output=embed" width="100%" height="360px" frameborder="0" style="border:0" allowfullscreen=""></iframe> --}}
             </div>
             <div class="info">
               <span><i class="fa fa-phone"></i> <a href="#">010-020-0340<br>090-080-0760</a></span>

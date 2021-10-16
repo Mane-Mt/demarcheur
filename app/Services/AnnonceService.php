@@ -10,6 +10,6 @@ class AnnonceService{
     }
 
     public function userAnnonce($user){
-        return $user->annonces->sortByDesc('id');
+        return $user->annonces->sortByDesc('update_at');
     }
 }

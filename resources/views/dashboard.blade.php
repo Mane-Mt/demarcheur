@@ -5,6 +5,8 @@
 
     @include('layouts.headers.cards')
 
+
+
     <div class="container-fluid mt--7">
         <div class="row">
             @can('isAdmin')
@@ -67,6 +69,14 @@
         </div>
         <div class="row mt-5">
             <div class="col-xl-12 mb-5 mb-xl-0 ">
+                @if (session('success'))
+                <div class="alert alert-success alert-dismissible fade show col-12 my-3" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true"><i class="mdi mdi-close"></i></span>
+                    </button>
+                    {{session('success')}}
+                </div>
+                @endif
 
                     <div class="row">
                         <div class="col">
@@ -140,19 +150,19 @@
                                             @if($annonce->annonceType == "Offre")
                                             <div class="avatar-group">
                                               <a href="{{asset('images/'.$annonce->photo1)}}" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Ryan Tompson">
-                                                <img alt="Image placeholder" src="{{asset('images/'.$annonce->photo1)}}">
+                                                <img alt="Non definis" src="{{asset('images/'.$annonce->photo1)}}">
                                               </a>
                                               <a href="{{asset('images/'.$annonce->photo2)}}" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Romina Hadid">
-                                                <img alt="Image placeholder" src="{{asset('images/'.$annonce->photo2)}}">
+                                                <img alt="Non definis" src="{{asset('images/'.$annonce->photo2)}}">
                                               </a>
                                               <a href="{{asset('images/'.$annonce->photo3)}}" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Alexander Smith">
-                                                <img alt="Image placeholder" src="{{asset('images/'.$annonce->photo3)}}">
+                                                <img alt="Non definis" src="{{asset('images/'.$annonce->photo3)}}">
                                               </a>
                                               <a href="{{asset('images/'.$annonce->photo5)}}" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Jessica Doe">
-                                                <img alt="Image placeholder" src="{{asset('images/'.$annonce->photo4)}}">
+                                                <img alt="Non definis" src="{{asset('images/'.$annonce->photo4)}}">
                                               </a>
                                               <a href="{{asset('images/'.$annonce->photo5)}}" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Jessica Doe">
-                                                <img alt="Image placeholder" src="{{asset('images/'.$annonce->photo5)}}">
+                                                <img alt="Non definis" src="{{asset('images/'.$annonce->photo5)}}">
                                               </a>
                                             </div>
                                             @endif

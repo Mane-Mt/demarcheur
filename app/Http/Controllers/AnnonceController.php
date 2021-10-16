@@ -258,6 +258,9 @@ class AnnonceController extends Controller
         }
 
         $annonce->annonceType = $request->annonceType;
+        $annonce->country = $request->country;
+        $annonce->town = $request->town;
+        $annonce->price = $request->price;
         $annonce->type = $type_de_chambre;
         $annonce->quartier = $quartier_ou_trouve_chambre;
         $annonce->description  = $descrition_de_chambre;

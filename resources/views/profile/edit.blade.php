@@ -2,8 +2,8 @@
 
 @section('content')
     @include('users.partials.header', [
-        'title' => __('Hello') . ' '. auth()->user()->name,
-        'description' => __('This is your profile page. You can see the progress you\'ve made with your work and manage your projects or assigned tasks'),
+        'title' => __('Bienvenue') . ' '. auth()->user()->name,
+        'description' => __('Miabe Demarcheur vous souhaite ,bienvenue cher utilisateur sur votre page de profile'),
         'class' => 'col-lg-7'
     ])
 
@@ -31,33 +31,33 @@
                             <div class="col">
                                 <div class="card-profile-stats d-flex justify-content-center mt-md-5">
                                     <div>
-                                        <span class="heading">22</span>
-                                        <span class="description">{{ __('Friends') }}</span>
+                                        <span class="heading">{{auth()->user()->annonces->isNotEmpty()? auth()->user()->annonces->count() :'0' }}</span>
+                                        <span class="description">{{ __('Publications') }}</span>
                                     </div>
                                     <div>
-                                        <span class="heading">10</span>
-                                        <span class="description">{{ __('Photos') }}</span>
+                                        <span class="heading">{{auth()->user()->annonces()->where('annonceType','Offre')->count()}}</span>
+                                        <span class="description">{{ __('Offres') }}</span>
                                     </div>
                                     <div>
-                                        <span class="heading">89</span>
-                                        <span class="description">{{ __('Comments') }}</span>
+                                        <span class="heading">{{auth()->user()->annonces()->where('annonceType','Demande')->count()}}</span>
+                                        <span class="description">{{ __('Demandes') }}</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="text-center">
                             <h3>
-                                {{ auth()->user()->name }}<span class="font-weight-light">, 27</span>
+                                {{ auth()->user()->name }}<span class="font-weight-light"></span>
                             </h3>
                             <div class="h5 font-weight-300">
-                                <i class="ni location_pin mr-2"></i>{{ __('Bucharest, Romania') }}
+                                <i class="ni location_pin mr-2"></i>{{auth()->user()->email}}
                             </div>
-                            <div class="h5 mt-4">
+                            {{-- <div class="h5 mt-4">
                                 <i class="ni business_briefcase-24 mr-2"></i>{{ __('Solution Manager - Creative Tim Officer') }}
                             </div>
                             <div>
                                 <i class="ni education_hat mr-2"></i>{{ __('University of Computer Science') }}
-                            </div>
+                            </div> --}}
                             <hr class="my-4" />
                             <p>{{ __('Ryan — the name taken by Melbourne-raised, Brooklyn-based Nick Murphy — writes, performs and records all of his own music.') }}</p>
                             <a href="#">{{ __('Show more') }}</a>
@@ -88,7 +88,7 @@
                                 </div>
                             @endif
 
-
+                                <input type="hidden" name="id" value="{{auth()->user()->id}}">
                             <div class="pl-lg-4">
                                 <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
                                     <label class="form-control-label" for="input-name">{{ __('Name') }}</label>
@@ -124,7 +124,7 @@
 
                                 <div class="form-group{{ $errors->has('photo') ? ' has-danger' : '' }}">
                                     <label class="form-control-label" for="input-photo">{{ __('photo') }}</label>
-                                    <input type="file" name="photo" id="input-photo" class="form-control form-control-alternative{{ $errors->has('photo') ? ' is-invalid' : '' }}" placeholder="{{ __('photo') }}" value="{{ old('photo', auth()->user()->photo) }}" required>
+                                    <input type="file" name="photo" id="input-photo" class="form-control form-control-alternative{{ $errors->has('photo') ? ' is-invalid' : '' }}" placeholder="{{ __('photo') }}" value="{{ old('photo', auth()->user()->photo) }}">
 
                                     @if ($errors->has('photo'))
                                         <span class="invalid-feedback" role="alert">
@@ -154,7 +154,7 @@
                                 </div>
                             @endif
 
-                            <div class="pl-lg-4">
+                            <div class="pl-lg-4" id="password">
                                 <div class="form-group{{ $errors->has('old_password') ? ' has-danger' : '' }}">
                                     <label class="form-control-label" for="input-current-password">{{ __('Current Password') }}</label>
                                     <input type="password" name="old_password" id="input-current-password" class="form-control form-control-alternative{{ $errors->has('old_password') ? ' is-invalid' : '' }}" placeholder="{{ __('Current Password') }}" value="" required>

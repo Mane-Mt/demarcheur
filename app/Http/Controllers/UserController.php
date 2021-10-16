@@ -58,7 +58,6 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -69,7 +68,7 @@ class UserController extends Controller
     {
         //
         $users = User::findOrFail($id);
-        return view('adminLte.editUser')->with('users', $users);
+        return view('users.edit')->with('users', $users);
 
     }
 
@@ -89,7 +88,7 @@ class UserController extends Controller
         $users->usertype = $request->input('usertype');
         $users->update();
         $message = 'your successfuly updated <strong>'.$oldname.'</strong>';
-        return redirect('/admin/listUser')->with('successupdate', $message);
+        return redirect()->route('home')->with('success', $message);
 
     }
 

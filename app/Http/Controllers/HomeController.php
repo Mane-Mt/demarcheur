@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Services\AnnonceService;
+use App\Models\User;
 use App\Models\Annonce;
+use App\Services\AnnonceService;
 
 class HomeController extends Controller
 {
@@ -25,7 +26,11 @@ class HomeController extends Controller
     public function index()
     {
         $data['annonces'] =$this->annonceService->userAnnonce(auth()->user());
-        // dd($data['annonces']);
+        $allUsers = User::all();
+        $data['allUsers'] =  $allUsers;
+        $data['demarcheurs'] = $allUsers->where('usertype','Demarcheur');
+        $data['users'] = $allUsers->where('usertype','Simple');
+        $data['dashboard'] = true;
         return view('dashboard',$data);
     }
 }
