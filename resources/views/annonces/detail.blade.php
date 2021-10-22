@@ -2,24 +2,27 @@
 @extends('layouts.master')
 
 @section('content')
-    <div class="container">
-        <div class="row pd-3 " style="margin-top: 7%">
-            <div class="col-8 box">
-                <div><b>Type de chambre : </b> {{ $annonce->type}}</div>
-            <div><b>Quartier : </b> {{ $annonce->quartier}}</div>
-            <p>
-                <b>Description : </b> {{ $annonce->description}}
-            </p>
-            @if ($annonce->annonceType == 'Offre')
-            <div class="row">
-                <div class="col-lg-6"><img src="{{asset('images/'.$annonce->photo1)}}" alt="" > </div>
-                <div class="col-lg-6"><img src="{{asset('images/'.$annonce->photo2)}}" alt="" > </div>
-                <div class="col-lg-6"><img src="{{asset('images/'.$annonce->photo3)}}" alt="" > </div>
-                <div class="col-lg-6"><img src="{{asset('images/'.$annonce->photo4)}}" alt="" > </div>
-                <div class="col-lg-6"><img src="{{asset('images/'.$annonce->photo5)}}" alt="" > </div>
+    <div class="container mt-3">
+        <div class="row pd-3 mt-5">
+            <div class="col-lg-8 box">
+                 <div>Type de chambre : <b>{{ $annonce->type}}</b> </div>
 
-                {{-- <div class="col-lg-6"><img src="{{$image->photo}}" alt="" srcset=""> </div> --}}
-            </div>
+                <div>Ville: <b>{{ $annonce->town}}</b></div>
+                        <div>Quartier:<b>{{ $annonce->quartier}}</b></div>
+                        <div>Budget <b>{{ $annonce->price}}</b></div>
+                <p>
+                    <b>Description : </b> {{ $annonce->description}}
+                </p>
+                @if ($annonce->annonceType == 'Offre')
+                <div class="row">
+                    <div class="col-lg-6"><img src="{{asset('public/images/'.$annonce->photo1)}}" alt="" > </div>
+                    <div class="col-lg-6"><img src="{{asset('public/images/'.$annonce->photo2)}}" alt="" > </div>
+                    <div class="col-lg-6"><img src="{{asset('public/images/'.$annonce->photo3)}}" alt="" > </div>
+                    <div class="col-lg-6"><img src="{{asset('public/images/'.$annonce->photo4)}}" alt="" > </div>
+                    <div class="col-lg-6"><img src="{{asset('public/images/'.$annonce->photo5)}}" alt="" > </div>
+
+                    {{-- <div class="col-lg-6"><img src="{{$image->photo}}" alt="" srcset=""> </div> --}}
+                </div>
 
 
             @endif

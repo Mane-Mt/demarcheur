@@ -110,11 +110,11 @@
                                             <br><br>
 
                                             <div class="row">
-                                                <img src="{{asset($annonce->photo1 ? 'images/'.$annonce->photo1 :'welcome/assets/images/contact-form-bg.png')}}" id="previewImg1" alt="room image1" style="max-width: 170px; margin-top: 20px;" class="col-md-3">
-                                                <img src="{{asset($annonce->photo2 ? 'images/'.$annonce->photo2 :'welcome/assets/images/contact-form-bg.png')}}" id="previewImg2" alt="room image2" style="max-width: 160px; margin-top: 20px;" class="col-md-2">
-                                                <img src="{{asset($annonce->photo3 ? 'images/'.$annonce->photo3 :'welcome/assets/images/contact-form-bg.png')}}" id="previewImg3" alt="room image3" style="max-width: 180px; margin-top: 20px;" class="col-md-2">
-                                                <img src="{{asset($annonce->photo4 ? 'images/'.$annonce->photo4 :'welcome/assets/images/contact-form-bg.png')}}" id="previewImg4" alt="room image4" style="max-width: 160px; margin-top: 20px;" class="col-md-2">
-                                                <img src="{{asset($annonce->photo5 ? 'images/'.$annonce->photo5 :'welcome/assets/images/contact-form-bg.png')}}" id="previewImg5" alt="room image5" style="max-width: 170px; margin-top: 20px;" class="col-md-3">
+                                                <img src="{{asset($annonce->photo1 ? 'public/images/'.$annonce->photo1 :'welcome/assets/images/contact-form-bg.png')}}" id="previewImg1" alt="room image1" style="max-width: 170px; margin-top: 20px;" class="col-md-3">
+                                                <img src="{{asset($annonce->photo2 ? 'public/images/'.$annonce->photo2 :'welcome/assets/images/contact-form-bg.png')}}" id="previewImg2" alt="room image2" style="max-width: 160px; margin-top: 20px;" class="col-md-2">
+                                                <img src="{{asset($annonce->photo3 ? 'public/images/'.$annonce->photo3 :'welcome/assets/images/contact-form-bg.png')}}" id="previewImg3" alt="room image3" style="max-width: 180px; margin-top: 20px;" class="col-md-2">
+                                                <img src="{{asset($annonce->photo4 ? 'public/images/'.$annonce->photo4 :'welcome/assets/images/contact-form-bg.png')}}" id="previewImg4" alt="room image4" style="max-width: 160px; margin-top: 20px;" class="col-md-2">
+                                                <img src="{{asset($annonce->photo5 ? 'public/images/'.$annonce->photo5 :'welcome/assets/images/contact-form-bg.png')}}" id="previewImg5" alt="room image5" style="max-width: 170px; margin-top: 20px;" class="col-md-3">
                                             </div>
                                         {{-- @endcan --}}
                                         </div>

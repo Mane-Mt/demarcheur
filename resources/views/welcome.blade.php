@@ -203,7 +203,8 @@
               @forelse ($offer_annonces as $offer_annonce)
                 <div class="item">
                     <div class="thumb">
-                    <img src="{{asset('images/'.$offer_annonce->photo1)}}" alt="" height="600px" width="auto">
+                    <img src="{{asset('public/images/
+                    '.$offer_annonce->photo1)}}" alt="" height="600px" width="auto">
                     <div class="hover-effect">
                         <div class="inner-content">
                             <span>{{$offer_annonce->type}}</span><br>
@@ -325,7 +326,8 @@
                         <div>
                           <div class="thumb">
                             {{-- <iframe width="100%" height="auto" src="https://www.youtube.com/embed/JynGuQx4a1Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> --}}
-                            <img src="{{asset('images/'.$villa_annonce->photo1)}}" alt="" srcset="">
+                            <img src="{{asset('public/images/
+                            '.$villa_annonce->photo1)}}" alt="" srcset="">
                             <div class="overlay-effect">
                                 <a href="#"><h4>{{$villa_annonce->type}}</h4></a>
                                 <span>{{$villa_annonce->quartier}}</span> <br>
@@ -343,7 +345,8 @@
                         <div>
                           <div class="thumb">
                             {{-- <iframe width="100%" height="auto" src="https://www.youtube.com/embed/JynGuQx4a1Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> --}}
-                            <img src="{{asset('images/'.$deux_chambre_annonce->photo1)}}" alt="" srcset="">
+                            <img src="{{asset('public/images/
+                            '.$deux_chambre_annonce->photo1)}}" alt="" srcset="">
                             <div class="overlay-effect">
                               <a href="#"><h4>{{$deux_chambre_annonce->type}}</h4></a>
                               <span>{{$deux_chambre_annonce->quartier}}</span> <br>
@@ -361,7 +364,8 @@
                         <div>
                           <div class="thumb">
                             {{-- <iframe width="100%" height="auto" src="https://www.youtube.com/embed/JynGuQx4a1Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> --}}
-                            <img src="{{asset('images/'.$chambre_salon_annonce->photo1)}}" alt="" srcset="">
+                            <img src="{{asset('public/images/
+                            '.$chambre_salon_annonce->photo1)}}" alt="" srcset="">
                             <div class="overlay-effect">
                                 <a href="#"><h4>{{$chambre_salon_annonce->type}}</h4></a>
                                 <span>{{$chambre_salon_annonce->quartier}}</span> <br>
@@ -380,7 +384,8 @@
                         <div>
                           <div class="thumb">
                             {{-- <iframe width="100%" height="auto" src="https://www.youtube.com/embed/JynGuQx4a1Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> --}}
-                            <img src="{{asset('images/'.$une_piece_annonce->photo1)}}" alt="" srcset="">
+                            <img src="{{asset('public/images/
+                            '.$une_piece_annonce->photo1)}}" alt="" srcset="">
                             <div class="overlay-effect">
                                 <a href="#"><h4>{{$une_piece_annonce->type}}</h4></a>
                                 <span>{{$une_piece_annonce->quartier}}</span> <br>
