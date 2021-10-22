@@ -3,9 +3,20 @@
 @section('content')
     @include('layouts.headers.guest')
 
-    <div class="container mt--8 pb-5">
+    <div class="container pb-5">
+
         <div class="row justify-content-center">
+
             <div class="col-lg-5 col-md-7">
+                <div class="row">
+
+                    <div class="col-6 text-left mb-2">
+                        <a href="{{ route('register') }}" class="text-light">
+                            <div class="font-weight-bold">{{ __('S\'inscrire') }}</div>
+                        </a>
+                    </div>
+                    <div class="col-6 text-right"></div>
+                </div>
                 <div class="card bg-secondary shadow border-0">
                     {{-- <div class="card-header bg-transparent pb-5">
                         <div class="text-muted text-center mt-2 mb-3"><small>{{ __('Sign in with') }}</small></div>
@@ -20,23 +31,22 @@
                             </a>
                         </div>
                     </div> --}}
-                    <div class="card-body px-lg-5 py-lg-5">
-                        <div class="text-center text-muted mb-4">
 
-                        </div>
+
+                    <div class="card-body px-lg-5 py-lg-5">
+
                         <form role="form" method="POST" action="{{ route('login') }}">
                             @csrf
-
-                            <div class="form-group{{ $errors->has('email') ? ' has-danger' : '' }} mb-3">
+                            <div class="form-group{{ $errors->has('phone') ? ' has-danger' : '' }} mb-3">
                                 <div class="input-group input-group-alternative">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="ni ni-email-83"></i></span>
+                                        <span class="input-group-text"><i class="ni ni-phone-83"></i></span>
                                     </div>
-                                    <input class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="{{ __('Email') }}" type="email" name="email" value="{{ old('email') }}" value="admin@argon.com" required autofocus>
+                                    <input class="form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}" placeholder="{{ __('phone') }}" type="phone" name="phone" value="{{ old('phone') }}" value="admin@argon.com" required autofocus>
                                 </div>
-                                @if ($errors->has('email'))
+                                @if ($errors->has('phone'))
                                     <span class="invalid-feedback" style="display: block;" role="alert">
-                                        <strong>{{ $errors->first('email') }}</strong>
+                                        <strong>{{ $errors->first('phone') }}</strong>
                                     </span>
                                 @endif
                             </div>
@@ -66,7 +76,7 @@
                     </div>
                 </div>
                 <div class="row mt-3">
-                    <div class="col-6">
+                    {{-- <div class="col-6">
                         @if (Route::has('password.request'))
                             <a href="{{ route('password.request') }}" class="text-light">
                                 <small>{{ __('Mot de passe oublié?') }}</small>
@@ -77,7 +87,7 @@
                         <a href="{{ route('register') }}" class="text-light">
                             <small>{{ __('S\'inscrire') }}</small>
                         </a>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>

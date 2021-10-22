@@ -326,8 +326,7 @@
                         <div>
                           <div class="thumb">
                             {{-- <iframe width="100%" height="auto" src="https://www.youtube.com/embed/JynGuQx4a1Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> --}}
-                            <img src="{{asset('public/images/
-                            '.$villa_annonce->photo1)}}" alt="" srcset="">
+                            <img src="{{asset('public/images/'.$villa_annonce->photo1)}}" alt="" srcset="">
                             <div class="overlay-effect">
                                 <a href="#"><h4>{{$villa_annonce->type}}</h4></a>
                                 <span>{{$villa_annonce->quartier}}</span> <br>
