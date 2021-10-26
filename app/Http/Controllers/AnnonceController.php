@@ -32,14 +32,14 @@ class AnnonceController extends Controller
 
         return view('annonces.detail',$data);
     }
-    public function saveannonce(Request $request)
-    {
+    // public function saveannonce(Request $request)
+    // {
 
-        $annonce = new Annonce();
-        $this->insert($request, $annonce);
+    //     $annonce = new Annonce();
+    //     $this->insert($request, $annonce);
 
-        return redirect('/demarcheur/ancienannonce');
-    }
+    //     return redirect();
+    // }
 
     /**
      * Store a newly created resource in storage.
@@ -49,7 +49,10 @@ class AnnonceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $annonce = new Annonce();
+        $this->insert($request, $annonce);
+        $message = "Annonce creé avec succèss";
+        return redirect()->route('home')->with('success', $message);
     }
 
     /**
@@ -58,12 +61,7 @@ class AnnonceController extends Controller
      * @param  \App\Models\Annonce  $annonce
      * @return \Illuminate\Http\Response
      */
-    public function ancienannonce(Annonce $annonce)
-    {
-        // la vue qui va permettre de visualiser les annonnces poster
-         $annonce =  $this->annonceService->userAnnonce(auth()->user());
-        return view('dashboard')->with('annonces', $annonce);
-    }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -80,11 +78,7 @@ class AnnonceController extends Controller
 
     }
 
-    public function showAnnonce($id){
-        $data['annonce'] = Annonce::find($id);
-        // dd($data['annonce']);
-        return view('demarcheur.detailAnnonces',$data);
-    }
+
     /**
      * Update the specified resource in storage.
      *

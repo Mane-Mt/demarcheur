@@ -12,7 +12,7 @@
                     @if ($annonce->annonceType == 'Offre')
                     <div class=""><img src="{{asset('images/'.$annonce->photo1)}}" alt="" > </div>
                     @else
-                    <i class="fa fa-question-circle fa-10x text-danger" aria-hidden="true" style="font-size: 3.5rem"  ></i>
+                    <i class="fa fa-question-circle fa-10x text-danger" aria-hidden="true" style="font-size: 3.5rem" ></i>
                     @endif
 
 
@@ -23,7 +23,9 @@
                 <div class="col-lg-8 col-sm-12 annonce ">
                     <ul>
                         <li><b>{{$annonce->type}}</b></li>
-                        <li>Quartier de <b>{{ $annonce->quartier}}</b></li>
+                        <li>Ville: <b>{{ $annonce->town}}</b></li>
+                        <li>Quartier:<b>{{ $annonce->quartier}}</b></li>
+                        <li>Budget <b>{{ $annonce->price}}</b></li>
                         <li class="overflow-hidden">{{ Str::substr($annonce->description, 0,200).'...' }}</li>
                     </ul>
                 </div>
