@@ -88,7 +88,7 @@
                                         <h3 class="mb-0">Liste de mes Annonces</h3>
                                     </div>
                                     <div class="col text-right">
-                                        <a href="{{route('annonces.create')}}" class="btn btn-sm btn-primary">Nouveau</a>
+                                        <a href="{{route('annonces.create')}}" class="btn btn-sm btn-primary">Publier une nouvelle annonce</a>
                                     </div>
                                 </div>
                             </div>

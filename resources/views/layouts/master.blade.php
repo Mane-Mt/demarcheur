@@ -61,17 +61,18 @@ https://templatemo.com/tm-565-onix-digital
             <ul class="nav">
               <li class=""><a href="{{route('welcome')}}#top" class="active">Accueil</a></li>
               <li class=""><a href="{{route('welcome')}}#services">Demandes</a></li>
-              <li class=""><a href="{{route('welcome')}}#about">A propos</a></li>
               <li class=""><a href="{{route('welcome')}}#portfolio">Offres</a></li>
-              <li class=""><a href="{{route('welcome')}}#video">Categories</a></li>
               <li ><a href="{{route('annonces.index')}}">Annonces</a></li>
+              {{-- <li class=""><a href="{{route('welcome')}}#video">Categories</a></li> --}}
+              <li class=""><a href="{{route('welcome')}}#about">A propos</a></li>
               <li class=""><a href="{{route('welcome')}}#contact">Contacts</a></li>
               @guest
-                <li> <div class="main-red-button-hover" ><a href="{{ route('login') }}">Se connecter</a></div></li>
+                <li> <div class="main-red-button-hover" ><a href="{{ route('login') }}" style="color:white"> Se Connceter</a></div></li>
               @endguest
               @auth
-              <li ><div class="main-red-button-hover"><a href="{{ route('home') }}">Dashboard</a></div></li>
+              <li ><div class="main-red-button-hover"><a href="{{ route('home') }}" style="color:white">Publier</a></div></li>
               @endauth
+              <li> <a href="#"></a></li>
 
 
             </ul>

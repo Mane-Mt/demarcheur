@@ -32,14 +32,18 @@ class AnnonceController extends Controller
 
         return view('annonces.detail',$data);
     }
-    // public function saveannonce(Request $request)
-    // {
 
-    //     $annonce = new Annonce();
-    //     $this->insert($request, $annonce);
-
-    //     return redirect();
-    // }
+    public function search(Request $request){
+        $value = $request->value;
+        $annonces = Annonce::with(['user'])
+                        ->where('quartier','LIKE','%'.$value.'%')
+                        ->orWhere('country','LIKE','%'.$value.'%')
+                        ->orWhere('town','LIKE','%'.$value.'%')
+                        ->orWhere('price','LIKE','%'.$value.'%')
+                        // ->orWhere('quartier','LIKE','%'.$value.'%')
+                        ->get();
+        return response()->json($annonces);
+    }
 
     /**
      * Store a newly created resource in storage.

@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Http;
 use App\Http\Controllers;
 
 /*
@@ -23,12 +24,13 @@ Route::get('/', 'App\Http\Controllers\WelcomeController@index')->name('welcome')
 
 Auth::routes();
 
-//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//Route::get('/home', [HomeController::class, 'index'])->name('home');
 //Auth::routes();
 
 Route::get('/home', 'App\Http\Controllers\HomeController@index')->name('home');
 Route::resource('/annonces', 'App\Http\Controllers\AnnonceController')->except(['index']);
     Route::get('/annonces-list/{usertype?}', 'App\Http\Controllers\AnnonceController@index')->name('annonces.index');
+    Route::post('/search/annonces', 'App\Http\Controllers\AnnonceController@search')->name('annonces.search');
 
 Route::group(['middleware' => 'auth'], function () {
 
@@ -38,7 +40,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('map', function () {return view('pages.maps');})->name('map');
 	Route::get('icons', function () {return view('pages.icons');})->name('icons');
 
-    // Route::ressource('users','App\Http\Controllers\UserController');
+    // Route::ressource('users','UserController');
     Route::resource('user', 'App\Http\Controllers\UserController', ['except' => ['show']]);
 	Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'App\Http\Controllers\ProfileController@password']);
 
