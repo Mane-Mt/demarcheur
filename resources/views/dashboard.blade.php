@@ -88,7 +88,7 @@
                                         <h3 class="mb-0">Liste de mes Annonces</h3>
                                     </div>
                                     <div class="col text-right">
-                                        <a href="{{route('annonces.create')}}" class="btn btn-sm btn-primary">Nouveau</a>
+                                        <a href="{{route('annonces.create')}}" class="btn btn-sm btn-primary">Publier une nouvelle annonce</a>
                                     </div>
                                 </div>
                             </div>
@@ -149,20 +149,20 @@
                                         <td>
                                             @if($annonce->annonceType == "Offre")
                                             <div class="avatar-group">
-                                              <a href="{{asset('images/'.$annonce->photo1)}}" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Ryan Tompson">
-                                                <img alt="Non definis" src="{{asset('images/'.$annonce->photo1)}}">
+                                              <a href="{{asset('public/images/'.$annonce->photo1)}}" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Ryan Tompson">
+                                                <img alt="Non definis" src="{{asset('public/images/'.$annonce->photo1)}}">
                                               </a>
-                                              <a href="{{asset('images/'.$annonce->photo2)}}" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Romina Hadid">
-                                                <img alt="Non definis" src="{{asset('images/'.$annonce->photo2)}}">
+                                              <a href="{{asset('public/images/'.$annonce->photo2)}}" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Romina Hadid">
+                                                <img alt="Non definis" src="{{asset('public/images/'.$annonce->photo2)}}">
                                               </a>
-                                              <a href="{{asset('images/'.$annonce->photo3)}}" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Alexander Smith">
-                                                <img alt="Non definis" src="{{asset('images/'.$annonce->photo3)}}">
+                                              <a href="{{asset('public/images/'.$annonce->photo3)}}" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Alexander Smith">
+                                                <img alt="Non definis" src="{{asset('public/images/'.$annonce->photo3)}}">
                                               </a>
-                                              <a href="{{asset('images/'.$annonce->photo5)}}" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Jessica Doe">
-                                                <img alt="Non definis" src="{{asset('images/'.$annonce->photo4)}}">
+                                              <a href="{{asset('public/images/'.$annonce->photo5)}}" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Jessica Doe">
+                                                <img alt="Non definis" src="{{asset('public/images/'.$annonce->photo4)}}">
                                               </a>
-                                              <a href="{{asset('images/'.$annonce->photo5)}}" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Jessica Doe">
-                                                <img alt="Non definis" src="{{asset('images/'.$annonce->photo5)}}">
+                                              <a href="{{asset('public/images/'.$annonce->photo5)}}" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Jessica Doe">
+                                                <img alt="Non definis" src="{{asset('public/images/'.$annonce->photo5)}}">
                                               </a>
                                             </div>
                                             @endif

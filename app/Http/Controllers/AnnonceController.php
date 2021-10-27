@@ -32,6 +32,7 @@ class AnnonceController extends Controller
 
         return view('annonces.detail',$data);
     }
+<<<<<<< HEAD
     // public function saveannonce(Request $request)
     // {
 
@@ -40,6 +41,20 @@ class AnnonceController extends Controller
 
     //     return redirect();
     // }
+=======
+
+    public function search(Request $request){
+        $value = $request->value;
+        $annonces = Annonce::with(['user'])
+                        ->where('quartier','LIKE','%'.$value.'%')
+                        ->orWhere('country','LIKE','%'.$value.'%')
+                        ->orWhere('town','LIKE','%'.$value.'%')
+                        ->orWhere('price','LIKE','%'.$value.'%')
+                        // ->orWhere('quartier','LIKE','%'.$value.'%')
+                        ->get();
+        return response()->json($annonces);
+    }
+>>>>>>> 17222694a2f884be341976ce5196357d588b0687
 
     /**
      * Store a newly created resource in storage.

@@ -28,7 +28,7 @@
                         <form role="form" method="POST" action="{{ route('register') }}">
                             @csrf
 
-                            <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
+                            {{-- <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
                                 <div class="input-group input-group-alternative mb-3">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
@@ -53,7 +53,7 @@
                                         <strong>{{ $errors->first('email') }}</strong>
                                     </span>
                                 @endif
-                            </div>
+                            </div> --}}
 
                             <div class="form-group{{ $errors->has('phone') ? ' has-danger' : '' }}">
                                 <div class="input-group input-group-alternative mb-3">
@@ -72,7 +72,7 @@
                             <div class="form-group{{ $errors->has('password') ? ' has-danger' : '' }}">
                                 <div class="input-group input-group-alternative">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
+                                        <span class="input-group-text"></i></span>
                                     </div>
                                     <input class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" placeholder="{{ __('Password') }}" type="password" name="password" required>
                                 </div>
@@ -85,7 +85,7 @@
                             <div class="form-group">
                                 <div class="input-group input-group-alternative">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
+                                        <span class="input-group-text"></i></span>
                                     </div>
                                     <input class="form-control" placeholder="{{ __('Confirm Password') }}" type="password" name="password_confirmation" required>
                                 </div>
@@ -96,15 +96,15 @@
                             <div class="row my-4">
                                 <div class="col-12">
                                     <div class="custom-control custom-control-alternative custom-checkbox">
-                                        <input class="custom-control-input" id="customCheckRegister" type="checkbox">
-                                        <label class="custom-control-label" for="customCheckRegister">
-                                            <span class="text-muted">{{ __('I agree with the') }} <a href="#!">{{ __('Privacy Policy') }}</a></span>
+                                        <input class="custom-control-input" type="checkbox" id="privacyPolicy" >
+                                        <label class="custom-control-label" for="privacyPolicy">
+                                            <span class="text-muted">{{ __('J\'accepte') }} <a href="#!">{{ __('les conditions d\'utilisation') }}</a></span>
                                         </label>
                                     </div>
                                 </div>
                             </div>
                             <div class="text-center">
-                                <button type="submit" class="btn btn-primary mt-4">{{ __('Create account') }}</button>
+                                <button type="submit" id="form-submit" class="btn btn-primary mt-4" >{{ __('Create account') }}</button>
                             </div>
                         </form>
                     </div>
@@ -112,4 +112,29 @@
             </div>
         </div>
     </div>
+
 @endsection
+
+@push('js')
+{{-- <script>
+
+
+    // $(document).ready(function () {
+
+    //     $('#privacyPolicy').click(function (e) {
+    //         e.preventDefault();
+    //         var checkbox =document.getElementById("privacyPolicy");
+    //         var submit = document.getElementById("form-submit");
+    //         if(checkbox.checked == true){
+
+    //             submit.disabled = false;
+    //         }else{
+    //             alert(submit)
+    //             submit.disabled = true;
+    //         }
+    //     });
+
+    // });
+</script>
+@endpush --}}
+
