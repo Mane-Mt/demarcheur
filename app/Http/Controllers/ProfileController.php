@@ -40,6 +40,9 @@ class ProfileController extends Controller
         return back()->withStatus(__('Profil Modifié avec succès'));
     }
 
+
+    
+
     /**
      * Change the password
      *
