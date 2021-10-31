@@ -860,6 +860,7 @@ Banner Style
 */
 
 .main-banner {
+  background-image: url(../images/demarcheur3.jpeg);
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
@@ -870,7 +871,7 @@ Banner Style
 
 .main-banner:after {
   content: '';
-  background-image: url(../images/baner-dec-left.png);
+  /*background-image: url(../images/baner-dec-left.png);*/
   background-repeat: no-repeat;
   position: absolute;
   left: 0;
@@ -881,7 +882,7 @@ Banner Style
 
 .main-banner:before {
   content: '';
-  background-image: url(../images/banner-right-image.png);
+  /*background-image: url(../images/banner-right-image.png);*/
   background-repeat: no-repeat;
   background-size: cover;
   position: absolute;
