@@ -29,7 +29,24 @@ TemplateMo 565 Onix Digital
 https://templatemo.com/tm-565-onix-digital
 
 -->
-  </head>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-211674658-1">
+</script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-211674658-1');
+</script>
+
+<!-- Google Adsense -->
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3783796964558828"
+     crossorigin="anonymous"></script>
+</head>
 
 <body>
 
@@ -67,10 +84,14 @@ https://templatemo.com/tm-565-onix-digital
               <li class=""><a href="{{route('welcome')}}#about">A propos</a></li>
               <li class=""><a href="{{route('welcome')}}#contact">Contacts</a></li>
               @guest
-                <li> <div class="main-red-button-hover" ><a href="{{ route('login') }}" style="color:white"> Se Connceter</a></div></li>
+                <li>
+                   <div class="" >
+                     <a href="{{ route('login') }}" style="color:white; background:red; border-radius: 20px;" > Se Connceter</a>
+                    </div>
+                </li>
               @endguest
               @auth
-              <li ><div class="main-red-button-hover"><a href="{{ route('home') }}" style="color:white">Publier</a></div></li>
+              <li ><div class="main-red-button-hover"><a href="{{ route('home') }}" style="color:white;background:red; border-radius: 20px;">Publier</a></div></li>
               @endauth
               <li> <a href="#"></a></li>
 
@@ -95,6 +116,7 @@ https://templatemo.com/tm-565-onix-digital
   <script src="{{asset('welcome/assets/js/animation.js') }}"></script>
   <script src="{{asset('welcome/assets/js/imagesloaded.js') }}"></script>
   <script src="{{asset('welcome/assets/js/custom.js') }}"></script>
+  <script src="https://code.iconify.design/2/2.0.3/iconify.min.js"></script>
 
   @yield('js')
 

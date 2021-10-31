@@ -20,6 +20,7 @@
                     <div class="call-button">
                       <a href="#"><i class="fa fa-whatsapp"></i> +228 70888992</a>
                     </div>
+
                   </div>
                 </div>
                 <div class="item header-text">
@@ -114,12 +115,19 @@
     </div>
   </div>
 
+  <style>
+    .abel{
+      color:red;
+      
+    }
+
+  </style>
   <div id="about" class="about-us section">
     <div class="container">
       <div class="row">
         <div class="col-lg-6 align-self-center">
           <div class="left-image">
-            <img src="welcome/assets/images/about-left-image.png" alt="Two Girls working together">
+            <img src="welcome/assets/images/demarcheur2.jpeg" alt="Two Girls working together" class="rounded-pill">
           </div>
         </div>
         <div class="col-lg-6">
@@ -185,7 +193,7 @@
 
   <div id="portfolio" class="our-portfolio section">
     <div class="portfolio-left-dec">
-      <img src="welcome/assets/images/portfolio-left-dec.png" alt="">
+      <img src="welcome/assets/images/demarcheur.jpeg" alt="" class="rounded-pill">
     </div>
     <div class="container">
       <div class="row">
@@ -236,7 +244,7 @@
     </div>
   </div>
 
-  <div id="pricing" class="pricing-tables">
+  <!--div id="pricing" class="pricing-tables">
     <div class="tables-left-dec">
       <img src="welcome/assets/images/tables-left-dec.png" alt="">
     </div>
@@ -303,7 +311,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </div-->
 
 
   <div id="video" class="our-videos section">
@@ -313,6 +321,12 @@
     <div class="videos-right-dec">
       <img src="welcome/assets/images/videos-right-dec.png" alt="">
     </div>
+
+    <div class="call-button" style="position:fixed; bottom:1%;right:1%; z-index:9999;">
+      <a href="https://wa.me/22870888992"><i class="fa fa-whatsapp fa-spin fa-3x fa-fw"></i></a>
+    </div>
+
+
     <div class="container">
       <div class="row">
         <div class="col-lg-12">
@@ -401,11 +415,18 @@
 
                   </ul>
                 </div>
+
+                <!--style>
+
+                  .haut{
+                    height: 170px;
+                  }
+                </style>
                 <div class="col-lg-4">
                   <div class="menu">
                     <div class="active">
                       <div class="thumb">
-                        <img src="welcome/assets/images/video-thumb-01.png" alt="">
+                        <img src="welcome/assets/images/demarcheur4.jpeg" alt="Villa" class="haut">
                         <div class="inner-content">
                           <h4>Villa</h4>
                           <span>Dernière annonce de villa</span>
@@ -414,7 +435,7 @@
                     </div>
                     <div>
                       <div class="thumb">
-                        <img src="welcome/assets/images/video-thumb-02.png" alt="">
+                        <img src="welcome/assets/images/demarcheur4.jpeg" alt="Deux chambres salon" class="haut">
                         <div class="inner-content">
                           <h4>Deux chambres salon</h4>
                           <span>Dernière annonce de deux chambres salon</span>
@@ -423,7 +444,7 @@
                     </div>
                     <div>
                       <div class="thumb">
-                        <img src="welcome/assets/images/video-thumb-03.png" alt="Marketing">
+                        <img src="welcome/assets/images/demarcheur4.jpeg" alt="chambre salon" class="haut">
                         <div class="inner-content">
                           <h4>Chambre salon</h4>
                           <span>Dernière annonce de  chambre salon</span>
@@ -432,7 +453,7 @@
                     </div>
                     <div>
                       <div class="thumb">
-                        <img src="welcome/assets/images/video-thumb-04.png" alt="SEO Work">
+                        <img src="welcome/assets/images/demarcheur4.jpeg" alt="Piece" class="haut">
                         <div class="inner-content">
                           <h4>Une pièce</h4>
                           <span>Dernière annonce d'une pièce</span>
@@ -440,7 +461,7 @@
                       </div>
                     </div>
                   </div>
-                </div>
+                </div-->
               </div>
             </div>
           </div>
@@ -448,7 +469,7 @@
       </div>
     </div>
   </div>
-
+  {{-- 
   <div id="subscribe" class="subscribe">
     <div class="container">
       <div class="row">
@@ -469,7 +490,8 @@
       </div>
     </div>
   </div>
-
+ --}}
+            
 
   <div id="contact" class="contact-us section">
     <div class="container">
@@ -481,16 +503,21 @@
               <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.574391019117!2d1.1908113147689825!3d6.187666695520455!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNsKwMTEnMTUuNiJOIDHCsDExJzM0LjgiRQ!5e0!3m2!1sfr!2stg!4v1633451403792!5m2!1sfr!2stg" width="100%" height="360px" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
               {{-- <iframe src="https://maps.google.com/maps?q=Av.+L%C3%BAcio+Costa,+Rio+de+Janeiro+-+RJ,+Brazil&t=&z=13&ie=UTF8&iwloc=&output=embed" width="100%" height="360px" frameborder="0" style="border:0" allowfullscreen=""></iframe> --}}
             </div>
-            <div class="info">
-              <span><i class="fa fa-phone"></i> <a href="#">010-020-0340<br>090-080-0760</a></span>
-              <span><i class="fa fa-envelope"></i> <a href="#">info@company.com<br>mail@company.com</a></span>
-            </div>
           </div>
         </div>
         <div class="col-lg-5 align-self-center">
           <form id="contact" action="" method="get">
             <div class="row">
+            <div class="info">
               <div class="col-lg-12">
+                <fieldset>
+                  <span><i class="fa fa-phone"></i> <a href="tel:+22870888992">+22870888992</a></span>
+                  <span><i class="fa fa-envelope"></i> <a href="mailto:contact@allodemarcheur.com">contact@allodemarcheur.com</a></span>
+                </fieldset>
+              </div>
+              </div>
+                        
+              <!--div class="col-lg-12">
                 <fieldset>
                   <input type="name" name="name" id="name" placeholder="Name" autocomplete="on" required>
                 </fieldset>
@@ -514,7 +541,7 @@
                 <fieldset>
                   <button type="submit" id="form-submit" class="main-button">Submit Request</button>
                 </fieldset>
-              </div>
+              </div-->
             </div>
           </form>
         </div>
@@ -532,20 +559,24 @@
     <img src="welcome/assets/images/footer-dec.png" alt="">
   </div>
 
+  
+
   <footer>
     <div class="container">
       <div class="row">
         <div class="col-lg-3">
           <div class="about footer-item">
             <div class="logo">
-              <a href="#"><img src="welcome/assets/images/logo.png" alt="Onix Digital TemplateMo"></a>
+              <a href="#"><img src="/assets/img/default/logo.png" width="auto" height="50"></a>
             </div>
-            <a href="#">info@company.com</a>
+            <a href="mailto:contact@allodemarcheur.com">contact@allodemarcheur.com</a>
             <ul>
-              <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+              <li><a href="https://www.facebook.com/Allo-Demarcheur-105452788589316/"><i class="fa fa-facebook"></i></a></li>
               <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-              <li><a href="#"><i class="fa fa-behance"></i></a></li>
-              <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+              <li><a href="https://www.linkedin.com/in/demarcheur-allo-208162225"><i class="fa fa-linkedin"></i></a></li>
+              <li><a href="https://vm.tiktok.com/ZM8m4f68k/" style="background: url(welcome/assets/images/tiktok.png) width: 22px; height: 35px;"><span class="iconify" data-icon="fa-brands:tiktok"></span></a></li>
+              <li><a href="https://wa.me/message/4NF4FQTACWWZN1"><i class="fa fa-whatsapp"></i></a></li>
+              <li><a href=" https://www.instagram.com/invites/contact/?i=1x9n7915bn48o&utm_content=mycre6x"><i class="fa fa-instagram"></i></a></li>
             </ul>
           </div>
         </div>
@@ -553,25 +584,26 @@
           <div class="services footer-item">
             <h4>Services</h4>
             <ul>
-              <li><a href="#">SEO Development</a></li>
-              <li><a href="#">Business Growth</a></li>
-              <li><a href="#">Social Media Managment</a></li>
-              <li><a href="#">Website Optimization</a></li>
+              <li><a href="#">Graphisme</a></li>
+              <li><a href="#">creation d'application mobile</a></li>
+              <li><a href="#">creation d'application desktop</a></li>
+              <li><a href="#">creation d'application web</a></li>
+              <li><a href="#">creation des aquarium</a></li>
+              <li><a href="#">maper vos maison,entreprise...</a></li>
             </ul>
           </div>
         </div>
         <div class="col-lg-3">
           <div class="community footer-item">
-            <h4>Community</h4>
+            <h4>Communaute</h4>
             <ul>
-              <li><a href="#">Digital Marketing</a></li>
-              <li><a href="#">Business Ideas</a></li>
-              <li><a href="#">Website Checkup</a></li>
-              <li><a href="#">Page Speed Test</a></li>
+              <li><a href="https://aqualab.allodemarcheur.com">Aqualab Togo</a></li>
+              <li><a href="https://phoecon.allodemarcheur.com">PhoeCon</a></li>
+              
             </ul>
           </div>
         </div>
-        <div class="col-lg-3">
+        <!--div class="col-lg-3">
           <div class="subscribe-newsletters footer-item">
             <h4>Subscribe Newsletters</h4>
             <p>Get our latest news and ideas to your inbox</p>
@@ -580,17 +612,16 @@
               <button type="submit" id="form-submit" class="main-button "><i class="fa fa-paper-plane-o"></i></button>
             </form>
           </div>
-        </div>
+        </div-->
         <div class="col-lg-12">
           <div class="copyright">
-            <p>Copyright © 2021 Onix Digital Co., Ltd. All Rights Reserved.
+            <p>Copyright © {{ date('Y') }} Allodemarcheur. All Rights Reserved.
             <br>
-            Designed by <a rel="nofollow" href="https://templatemo.com" title="free CSS templates">TemplateMo</a></p>
+            Designed by <a rel="nofollow" href="https://phoecon.allodemarcheur.com" title="Aller sur le site des developpeur">PhoeCon</a></p>
           </div>
         </div>
       </div>
     </div>
   </footer>
-
 
 @endsection
