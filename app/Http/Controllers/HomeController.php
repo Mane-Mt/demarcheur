@@ -31,6 +31,7 @@ class HomeController extends Controller
         $data['demarcheurs'] = $allUsers->where('usertype','Demarcheur');
         $data['users'] = $allUsers->where('usertype','Simple');
         $data['dashboard'] = true;
+      
         return view('dashboard',$data);
     }
 }

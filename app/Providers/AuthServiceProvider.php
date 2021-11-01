@@ -31,5 +31,9 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('isDemarcheur',function(){
            return auth()->user()->usertype == 'Demarcheur';
         });
+
+        Gate::define('postAnnonce',function(){
+        return (auth()->user()->usertype == 'Demarcheur' || auth()->user()->usertype == 'Admin') ;
+        });
     }
 }

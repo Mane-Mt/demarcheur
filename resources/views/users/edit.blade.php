@@ -17,9 +17,15 @@
                             {{ csrf_field() }}
                             {{ method_field('PUT') }}
                             <div class="form-group">
-                                <label>Name</label>
-                                <input type="text" class="form-control" name="username" value="{{$users->name}}">
+                                <label>Numero de Telephone</label>
+                                <input type="text" class="form-control" name="username" value="{{$users->phone}}" readonly>
                             </div>
+                            
+                            <div class="form-group">
+                                <label>Name</label>
+                                <input type="text" class="form-control" name="username" value="{{$users->name}}" readonly>
+                            </div>
+
                             <div class="form-group">
                                 <label>Give role</label>
                                  <select class="form-control" name="usertype">

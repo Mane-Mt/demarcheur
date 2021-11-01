@@ -1,16 +1,21 @@
 .box
 {
-    background-color: #fff !important;
     box-shadow: 0 0 0 1px #E2E9ED !important;
     padding:20px 10px !important;
-    /* z-index: 0 !important; */
-    /* display:inline-block; */
+
     overflow:auto;
     transition: 0.2s all !important;
     box-shadow: 1px 2px 5px rgba(0,0,0,0.2) !important;
 
 }
+.box-success
+{
+    background-color: #dff7e5!important;
+}
 
+.box-danger{
+    background-color: #f8d7da!important;;
+}
 /* .box:hover{
     z-index:1 !important;
     box-shadow: 0 8px 20px rgba(0,0,0,0.3) !important;
@@ -40,4 +45,8 @@
 .container
 {
     margin-top: 8%!important;
+}
+.container-child
+{
+    margin-top: 100px!important
 }

@@ -27,10 +27,13 @@
                                         <div class="form-group row">
                                             <label for="annonceType" class="col-md-3">Type d'annonce</label>
                                             <div class="input-group col-md-9">
-
+                                                {{-- {{dd(auth()->user()->usertype)}} --}}
                                                 <select class="custom-select" id="annonceType" name="annonceType" required>
-                                                    <option value="Offre"  {{ auth()->user()->usertype == 'demarcheur'?'selected':'' }}>Offre</option>
-                                                    <option value="Demande"  {{ auth()->user()->usertype == 'simple' || auth()->user()->usertype == 'admin'?'selected':'' }}>Demande</option>
+                                                    @can('postAnnonce')
+                                                    <option value="Offre"  {{ auth()->user()->usertype == 'Demarcheur'|| auth()->user()->usertype == 'Admin' ?'selected':'' }}>Offre</option>
+                                                    @endcan
+
+                                                    <option value="Demande"  {{ (auth()->user()->usertype == 'Simple' )?'selected':'' }}>Demande</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -43,7 +46,20 @@
                                                     <option value="Chambre salon">Chambre salon</option>
                                                     <option value="Deux chambres salon">Deux chambres salon</option>
                                                     <option value="Villa">Villa</option>
-                                                    <option value="autre">autre</option>
+                                                    <option value="Terrain">Terrain</option>
+                                                    <option value="Maison">Maison</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label for="inputGroupSelect01" class="col-md-3">Type de demande / offre</label>
+                                            <div class="input-group col-md-9">
+
+                                                <select class="custom-select" id="inputGroupSelect01" name="offerType" required>
+                                                    <option value="louer" selected>A louer</option>
+                                                    <option value="vendre" id="sell" hidden>A vendre</option>
+                                                    <option value="acheter" id="buy" hidden>A acheter</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -86,7 +102,8 @@
                                         </div>
 
                                         <br>
-                                        <div id="photos" hidden>
+                                        {{-- @can('postAnnonce') --}}
+                                        <div id="photos"  {{ (auth()->user()->usertype == 'Simple')?'hidden':'' }} >
                                             <div class="form-group row">
                                                 <label for="File1" class="col-md-3">Photo N°1</label>
                                                 <div class="col-md-9">
@@ -140,6 +157,8 @@
                                             </div>
                                         {{-- @endcan --}}
                                         </div>
+                                        {{-- @endcan --}}
+
 
                                         <br><br>
                                     <div class="card-footer">
@@ -224,26 +243,18 @@ function previewFile(input){
            if( $(this).val() == 'Offre'){
             $('#photos').attr('hidden', false);
             $('#File1').attr('required',true);
+            $('#sell').attr('hidden', false);
+            $('#buy').attr('hidden', true);
 
            }else{
             $('#photos').attr('hidden', true);
             $('#File1').attr('required',false);
+            $('#sell').attr('hidden', true);
+            $('#buy').attr('hidden', false);
            }
         });
     });
 
-    $(document).ready(function () {
-
-           if(  $('#annonceType').val() == 'Offre'){
-            $$('#photos').attr('hidden', false);
-            $('#File1').attr('required',true);
-
-           }else{
-            $('#photos').attr('hidden', true);
-            $('#File1').attr('required',false);
-
-           }
-    });
-
+   
 </script>
 @endpush

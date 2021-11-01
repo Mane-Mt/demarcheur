@@ -2,13 +2,24 @@
 @section('content')
 <div class="container">
 
-   <div class="row mt-lg-3" >
+   <div class="row mt-lg-3 container-child" >
+    <div class="col-lg-4 mt-3 d-lg-none d-block">
+        <form action="">
+            <div class="form-group mx-3">
+                <div class="input-group">
+                    <input type="text" id="search_input" name="search_input" class="form-control form-control-lg" placeholder="Search">
+                </div>
+            </div>
+            {{csrf_field()}}
+        </form>
+    </div>
 
     <div class="col-lg-8" id="section">
          @forelse ($annonces as $annonce)
          {{-- {{dd($annonce)}} --}}
             {{-- --}}
-            <div class="row my-3 box ">
+            <div class="row my-3 box @if($annonce->annonceType == 'Demande') box-danger @else box-success @endif">
+                <h3 class="text-center font-weight-bold">{{$annonce->annonceType}}</h3>
                 <div class="col-lg-2 col-sm-12 text-center text-lg-right">
                     @if ($annonce->annonceType == 'Offre')
                     <div class=""><img src="{{asset('public/images/'.$annonce->photo1)}}" alt="" > </div>
@@ -20,76 +31,17 @@
                 </div>
 
                 <div class="col-lg-8 col-sm-12 annonce ">
+
                     <ul>
-                        <li><b>{{$annonce->type}}</b></li>
-                        <li>Ville: <b>{{ $annonce->town}}</b></li>
-                        <li>Quartier:<b>{{ $annonce->quartier}}</b></li>
-                        <li>Budget <b>{{ $annonce->price}}</b></li>
+                        @include('common.annonce-list-item')
                         <li class="overflow-hidden">{{ Str::substr($annonce->description, 0,200).'...' }}</li>
                     </ul>
                 </div>
                 <div class="col-lg-2 col-sm-12 text-center text-lg-right">
-                    @if ($annonce->annonceType == 'Demande')
-                        @can('isDemarcheur')
-                        <button type="button" class="btn btn-success btn-sm-block btn-circle mt-lg-1 mt-xs-5 " data-bs-toggle="modal" data-bs-target="#exampleModal{{$annonce->id}}">
-                            Postuler
-                        </button>
-                        @endcan
-                    @endif
-
-                      <!-- Modal -->
-                      <div class="modal fade" id="exampleModal{{$annonce->id}}" tabindex="-1" aria-labelledby="exampleModal{{$annonce->id}}Label" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered">
-                          <div class="modal-content">
-                            <div class="modal-header">
-                              <h5 class="modal-title" id="exampleModal{{$annonce->id}}Label">Saisie de l'annonce</h5>
-                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                              Numero du posteur : {{ $annonce->user->phone}}
-                            </div>
-                            <div class="modal-footer">
-                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Ok</button>
-
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-
-                      @if ($annonce->annonceType == 'Offre')
+                    @include('common.postuler-btn')
                       <a href="{{route('annonces.show',$annonce->id)}}" class="btn btn-warning btn-sm-block btn-circle mt-lg-1 mx-lg-0 mt-xs-5" >
                         Details
                       </a>
-                      @else
-                      <button type="button" class="btn btn-warning btn-sm-block btn-circle mt-lg-1 mx-lg-0 mt-xs-5" data-bs-toggle="modal" data-bs-target="#detailModal{{$annonce->id}}">
-                        Details
-                      </button>
-
-                      <!-- Modal -->
-                      <div class="modal fade" id="detailModal{{$annonce->id}}" tabindex="-1" aria-labelledby="detailModal{{$annonce->id}}Label" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered">
-                          <div class="modal-content">
-                            <div class="modal-header">
-                              <h5 class="modal-title" id="detailModal{{$annonce->id}}Label">Detail de l'annonce</h5>
-                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body overflow-auto">
-                                Type de chambre: <b>{{ $annonce->type}}</b> <br>
-                               Quartier: <b>{{ $annonce->quartier}} </b> <br>
-                                Detail : <b>{{ $annonce->description}}
-                                    <span class="text-center">Image : </span>
-                                  <img src="{{asset('public/images/'.$annonce->photo1)}}" alt="" srcset="">
-                                </b>
-                            </div>
-                            <div class="modal-footer">
-                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                              <button type="button" class="btn btn-primary"  data-bs-dismiss="modal" data-bs-toggle="modal"  data-bs-target="#exampleModal{{$annonce->id}}">Postuler/Saisir</button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-
-                      @endif
 
 
                 </div>
@@ -156,21 +108,42 @@
                                             // }
                             $.each(response,function (index, element) {
                                 // alert(element.id)
-                                html += '<div class="row my-3 box ">'+
-                                          '<div class="col-lg-2 col-sm-12 text-center text-lg-right">'+
-                                            '@if ('+element.annoceType+'== "Offre")'+
-                                            '@else <i class="fa fa-question-circle fa-10x text-danger" aria-hidden="true" style="font-size: 3.5rem" ></i>@endif'+
-                                            '</div>'+
-                                            '<div class="col-lg-8 col-sm-12 annonce ">'+
-                                            '<ul>'+
-                                                '<li><b>'+element.type+'</b></li>'+
+                                html += '<div class="row my-3 box ';
+                                        if (element.annonceType == "Demande") {
+                                html     += 'box-danger';
+                                         }else{
+                                html    += 'box-success';
+                                         }
+                                html+= '">'+
+
+                                        '<h3 class="text-center font-weight-bold">'+element.annonceType+'</h3>'+
+                                        '<div class="col-lg-2 col-sm-12 text-center text-lg-right">';
+                                         if (element.annonceType =="Ofrre") {
+                                html        += '';
+                                        }else{
+                                html        += '<i class="fa fa-question-circle fa-10x text-danger" aria-hidden="true" style="font-size: 3.5rem" ></i>';
+                                        }
+
+                                 html      +='</div>'+
+                                             '<div class="col-lg-8 col-sm-12 annonce ">'+
+                                                '<ul>'+
+                                                '<li><b>'+element.type+'</b>';
+                                                if (element.offerType != null) {
+                               html            += ' à <b> '+element.offerType+'</b>';
+                                                }
+                                html          +='</li>'+
+                                                '<li>Pays: <b>'+element.country+'</b></li>'+
                                                 '<li>Ville: <b>'+element.town+'</b></li>'+
                                                 '<li>Budget <b>'+element.price+'</b></li>'+
                                                 '<li>Quartier:<b>'+element.quartier+'</b></li>'+
-                                                ' <li class="overflow-hidden">{{ Str::substr('+element.description+', 0,200)."..." }}</li>'+
+                                                ' <li class="overflow-hidden">'+element.description+'</li>'+
                                             '</ul>'+
+                                            '</div>';
+
+                                    html  +='<div class="col-lg-2 col-sm-12 text-center text-lg-right">'+
+                                                '<a href="annonces/",'+element.id+ ')}}" class="btn btn-warning btn-sm-block btn-circle mt-lg-1 mx-lg-0 mt-xs-5" > Details </a>'+
                                             '</div>'+
-                                        '</div>'
+                                        '</div>';
                            });
                         }
                         // alert(html)

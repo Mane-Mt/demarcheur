@@ -32,16 +32,6 @@ class AnnonceController extends Controller
 
         return view('annonces.detail',$data);
     }
-<<<<<<< HEAD
-    // public function saveannonce(Request $request)
-    // {
-
-    //     $annonce = new Annonce();
-    //     $this->insert($request, $annonce);
-
-    //     return redirect();
-    // }
-=======
 
     public function search(Request $request){
         $value = $request->value;
@@ -50,11 +40,11 @@ class AnnonceController extends Controller
                         ->orWhere('country','LIKE','%'.$value.'%')
                         ->orWhere('town','LIKE','%'.$value.'%')
                         ->orWhere('price','LIKE','%'.$value.'%')
-                        // ->orWhere('quartier','LIKE','%'.$value.'%')
+                        ->orWhere('offerType','LIKE','%'.$value.'%')
+                        ->orderBy('updated_at','desc')
                         ->get();
         return response()->json($annonces);
     }
->>>>>>> 17222694a2f884be341976ce5196357d588b0687
 
     /**
      * Store a newly created resource in storage.
@@ -267,6 +257,7 @@ class AnnonceController extends Controller
         }
 
         $annonce->annonceType = $request->annonceType;
+        $annonce->offerType = $request->offerType;
         $annonce->country = $request->country;
         $annonce->town = $request->town;
         $annonce->price = $request->price;

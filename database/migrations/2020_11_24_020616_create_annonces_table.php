@@ -16,6 +16,7 @@ class CreateAnnoncesTable extends Migration
         Schema::create('annonces', function (Blueprint $table) {
             $table->id();
             $table->string('annonceType');
+            $table->string('offerType')->nullable();
             $table->string('type');
             $table->string('quartier');
             $table->text('description');

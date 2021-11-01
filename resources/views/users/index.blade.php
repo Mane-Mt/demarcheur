@@ -28,6 +28,7 @@
                 <table class="table align-items-center table-flush">
                     <thead class="thead-light">
                         <tr>
+                            <th scope="col">Numero de Telephone</th>
                             <th scope="col">Name</th>
                             <th scope="col">Email</th>
                             <th scope="col">Type d'utilisateur</th>
@@ -41,14 +42,17 @@
 
                             <td>
                                 <div class="media align-items-center">
-                                    <a href="#" class="avatar rounded-circle mr-3">
+                                    {{-- <a href="#" class="avatar rounded-circle mr-3">
                                       <img alt="Image placeholder" src="../assets/img/theme/react.jpg">
-                                    </a>
+                                    </a> --}}
                                     <div class="media-body">
-                                      <span class="name mb-0 text-sm">{{$user->name}}</span>
+                                      <span class="name mb-0 text-sm">{{$user->phone}}</span>
                                     </div>
-                                  </div>
-                                </td>
+                                </div>
+                            </td>
+                            <td>
+                                <a href="mailto:{{$user->email}}">{{$user->name}}</a>
+                            </td>
                             <td>
                                 <a href="mailto:{{$user->email}}">{{$user->email}}</a>
                             </td>
