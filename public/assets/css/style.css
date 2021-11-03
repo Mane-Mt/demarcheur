@@ -50,3 +50,26 @@
 {
     margin-top: 100px!important
 }
+
+.icon{
+    margin-top: 15px !important;
+    margin-left: 15px !important;
+}
+.active{
+    display:block!important;
+}
+
+.main-btn{
+    color:white;
+    padding: 3px 5px; ;
+    background: #ff685f;
+     border-radius: 25px;
+}
+.main-btn a
+{
+    color:white !important;
+}
+.main-btn a:hover
+{
+    color:white !important;
+}

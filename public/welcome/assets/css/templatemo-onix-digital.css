@@ -22,16 +22,16 @@ Table of contents
 12. portfolio
 
 --------------------------------------------- */
-/* 
+/*
 ---------------------------------------------
 font & reset css
---------------------------------------------- 
+---------------------------------------------
 */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
-/* 
+/*
 ---------------------------------------------
 reset
---------------------------------------------- 
+---------------------------------------------
 */
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, div
 pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q,
@@ -134,10 +134,10 @@ img {
   overflow: hidden;
 }
 
-/* 
+/*
 ---------------------------------------------
 global styles
---------------------------------------------- 
+---------------------------------------------
 */
 html,
 body {
@@ -277,10 +277,10 @@ body {
   letter-spacing: 0.25px;
 }
 
-/* 
+/*
 ---------------------------------------------
 header
---------------------------------------------- 
+---------------------------------------------
 */
 
 .background-header {
@@ -407,7 +407,7 @@ header
   color: #2a2a2a;
 }
 
-.header-area .main-nav .nav li:hover a,
+/* .header-area .main-nav .nav li:hover a,
 .header-area .main-nav .nav li a.active {
   color: #ff685f!important;
 }
@@ -416,7 +416,7 @@ header
 .background-header .main-nav .nav li a.active {
   color: #ff685f!important;
   opacity: 1;
-}
+} */
 
 .header-area .main-nav .nav li.submenu {
   position: relative;
@@ -751,10 +751,10 @@ header
   }
 }
 
-/* 
+/*
 ---------------------------------------------
 preloader
---------------------------------------------- 
+---------------------------------------------
 */
 
 .js-preloader {
@@ -853,24 +853,25 @@ preloader
 
 
 
-/* 
+/*
 ---------------------------------------------
 Banner Style
---------------------------------------------- 
+---------------------------------------------
 */
 
 .main-banner {
+  background-image: url(../images/demarcheur3.jpeg);
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
-  padding: 236px 0px 130px 0px;
+  padding: 90px 0px 130px 0px;
   position: relative;
   overflow: hidden;
 }
 
 .main-banner:after {
   content: '';
-  background-image: url(../images/baner-dec-left.png);
+  /*background-image: url(../images/baner-dec-left.png);*/
   background-repeat: no-repeat;
   position: absolute;
   left: 0;
@@ -881,7 +882,7 @@ Banner Style
 
 .main-banner:before {
   content: '';
-  background-image: url(../images/banner-right-image.png);
+  /*background-image: url(../images/banner-right-image.png);*/
   background-repeat: no-repeat;
   background-size: cover;
   position: absolute;
@@ -897,13 +898,13 @@ Banner Style
 
 .main-banner .item h6 {
   text-transform: uppercase;
-  font-size: 18px;
+  font-size: 15px;
   color: #ff695f;
   margin-bottom: 15px;
 }
 
 .main-banner .item h2 {
-  font-size: 50px;
+  font-size: 25px;
   font-weight: 700;
   color: #2a2a2a;
   line-height: 72px;
@@ -972,10 +973,10 @@ Banner Style
 }
 
 
-/* 
+/*
 ---------------------------------------------
 Services Style
---------------------------------------------- 
+---------------------------------------------
 */
 
 .our-services .services-left-dec img {
@@ -1065,10 +1066,10 @@ Services Style
 }
 
 
-/* 
+/*
 ---------------------------------------------
 About
---------------------------------------------- 
+---------------------------------------------
 */
 
 .about-us {
@@ -1116,10 +1117,10 @@ About
 }
 
 
-/* 
+/*
 ---------------------------------------------
 Portfolio
---------------------------------------------- 
+---------------------------------------------
 */
 
 .our-portfolio .portfolio-left-dec img {
@@ -1285,10 +1286,10 @@ Portfolio
   height: 10px;
 }
 
-/* 
+/*
 ---------------------------------------------
 Pricing
---------------------------------------------- 
+---------------------------------------------
 */
 
 .pricing-tables .tables-left-dec img {
@@ -1391,10 +1392,10 @@ Pricing
 }
 
 
-/* 
+/*
 ---------------------------------------------
 Subscribe
---------------------------------------------- 
+---------------------------------------------
 */
 
 .subscribe {
@@ -1481,10 +1482,10 @@ Subscribe
 }
 
 
-/* 
+/*
 ---------------------------------------------
 Video
---------------------------------------------- 
+---------------------------------------------
 */
 
 .our-videos .videos-left-dec img {
@@ -1643,10 +1644,10 @@ Video
 }
 
 
-/* 
+/*
 ---------------------------------------------
 contact
---------------------------------------------- 
+---------------------------------------------
 */
 
 .contact-dec img {
@@ -1776,10 +1777,10 @@ form#contact button:hover {
 }
 
 
-/* 
+/*
 ---------------------------------------------
 Footer Style
---------------------------------------------- 
+---------------------------------------------
 */
 
 .footer-dec {
@@ -1904,10 +1905,10 @@ footer .copyright p a {
   color: #ff695f;
 }
 
-/* 
+/*
 ---------------------------------------------
 responsive
---------------------------------------------- 
+---------------------------------------------
 */
 
 
