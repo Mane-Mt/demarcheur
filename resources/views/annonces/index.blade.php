@@ -3,14 +3,9 @@
 <div class="container">
    <div class="row mt-lg-3 container-child" >
     <div class="col-lg-4 mt-3 d-lg-none">
-        <form action="">
-            <div class="form-group mx-3">
-                <div class="input-group">
-                    <input type="text" id="search" name="search" class="form-control d-none form-control-lg search" placeholder="Search">
-                </div>
-            </div>
-            {{csrf_field()}}
-        </form>
+        @component('components.serch-bar')
+            @slot('class') d-none  @endslot
+        @endcomponent  
     </div>
 
     <div class="col-lg-8" id="section">
@@ -55,20 +50,10 @@
     </div>
 
     <div class="col-lg-4 mt-3 d-none d-lg-block">
-        <form action="">
-            <div class="form-group mx-3">
-
-                {{-- <label for="exampleInputPassword1 text-center">Nom d'utilisateur de la personne</label> --}}
-                <div class="input-group">
-
-                    <input type="text" id="search" name="search" class="form-control form-control-lg search" placeholder="Search">
-
-                </div>
-
-            </div>
-            {{csrf_field()}}
-        </form>
-        {{-- <input type="search" name="search" class="form-control" id="search" style="border-radius: 15px; border: 2px solid blue;" placeholder="search"> --}}
+        @component('components.serch-bar')
+            @slot('class')  @endslot
+        @endcomponent  
+        {{-- <input type="search" name="search" class="form-control" style="border-radius: 15px; border: 2px solid blue;" placeholder="search"> --}}
     </div>
 
 

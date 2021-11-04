@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-
+    <link href="{{ asset(env('APP_LOGO')) }}" rel="icon" type="image/png">
     <title>{{env('APP_NAME')}}</title>
 
     <!-- Bootstrap core CSS -->
@@ -79,15 +79,15 @@ https://templatemo.com/tm-565-onix-digital
             <!-- ***** Menu Start ***** -->
 
 
-            <i class="fa fa-search d-lg-none  icon" aria-hidden="true" style="font-size:2rem"  id="icon"></i>
+            <i class="fa fa-search d-lg-none  search-icon" aria-hidden="true" style="font-size:2rem"  id="search-icon"></i>
             <ul class="nav">
-              <li class=""><a href="{{route('welcome')}}#top" class="active">Accueil</a></li>
-              <li class=""><a href="{{route('welcome')}}#services">Demandes</a></li>
-              <li class=""><a href="{{route('welcome')}}#portfolio">Offres</a></li>
+              <li class="scroll-to-section"><a href="{{route('welcome')}}#top" class="active">Accueil</a></li>
               <li ><a href="{{route('annonces.index')}}">Annonces</a></li>
-              {{-- <li class=""><a href="{{route('welcome')}}#video">Categories</a></li> --}}
-              <li class=""><a href="{{route('welcome')}}#about">A propos</a></li>
-              <li class=""><a href="{{route('welcome')}}#contact">Contacts</a></li>
+              <li class="scroll-to-section"><a href="{{route('welcome')}}#services">Demandes</a></li>
+              <li class="scroll-to-section"><a href="{{route('welcome')}}#portfolio">Offres</a></li>
+              {{-- <li class="scroll-to-section"><a href="{{route('welcome')}}#video">Categories</a></li> --}}
+              <li class="scroll-to-section"><a href="{{route('welcome')}}#about">A propos</a></li>
+              <li class="scroll-to-section"><a href="{{route('welcome')}}#contact">Contacts</a></li>
               @guest
                 <li>
                    <div class="main-btn" >
@@ -98,7 +98,7 @@ https://templatemo.com/tm-565-onix-digital
               @auth
               <li ><div class="main-btn"><a href="{{ route('home') }}" >Publier</a></div></li>
               @endauth
-              <li> <a href="#"></a></li>
+              {{-- <li> <a href="#"></a></li> --}}
             </ul>
             <a class='menu-trigger'>
                 <span>Menu</span>
@@ -119,6 +119,10 @@ https://templatemo.com/tm-565-onix-digital
   <script src="{{asset('welcome/assets/js/animation.js') }}"></script>
   <script src="{{asset('welcome/assets/js/imagesloaded.js') }}"></script>
   <script src="{{asset('welcome/assets/js/custom.js') }}"></script>
+
+  {{-- Mes propres js --}}
+  <script src="{{asset('welcome/assets/js/search-bar.js') }}"></script>
+  {{-- <script src="{{asset('welcome/assets/js/annonce-search.js') }}"></script> --}}
   <script src="https://code.iconify.design/2/2.0.3/iconify.min.js"></script>
 
   @yield('js')
@@ -142,89 +146,81 @@ https://templatemo.com/tm-565-onix-digital
         }
     });
 
-   $(document).ready(function () {
-       var search = $('.search');
-        $('#icon').click(function (e) {
-            e.preventDefault();
-        $('.search').toggleClass('active');
-        });
-   });
+    $(document).ready(function () {
+    $('.search').keyup(function (e) {
+        var value = $(this).val();
 
-   $(document).ready(function () {
-        $('.search').keyup(function (e) {
-            var value = $(this).val();
+        if(value != ''){
+            var _token = $('input[name="_token"]').val();
+            var find = false;
 
-            if(value != ''){
-                var _token = $('input[name="_token"]').val();
-                var find = false;
+            var html = '<div class="card-body box">'+
+                                'Aucun resultat n\'as été trouvé pour <b> '+ value +' </b>'
+                            '</div>'+
+                        '</div>';
 
-                var html = '<div class="card-body box">'+
-                                    'Aucun resultat n\'as été trouvé pour <b> '+ value +' </b>'
-                                '</div>'+
-                            '</div>';
+            $.ajax({
+                type: "POST",
+                url: "{{ route('annonces.search')}}",
+                data: {value:value,_token:_token},
+                success: function (response) {
 
-                $.ajax({
-                    type: "POST",
-                    url: "{{ route('annonces.search')}}",
-                    data: {value:value,_token:_token},
-                    success: function (response) {
+                   if(response != ''){
+                         html= '';
+                            // if (element.annoceType== "Offre"){
+                                        // '<div class=""><img src="public/images/.'+element.photo1+'" alt="" > </div>'+
+                                        //    }else{  '<i class="fa fa-question-circle fa-10x text-danger" aria-hidden="true" style="font-size: 3.5rem" ></i>'+
+                                        // }
+                        $.each(response,function (index, element) {
+                            // alert(element.id)
+                            html += '<div class="row my-3 box ';
+                                    if (element.annonceType == "Demande") {
+                            html     += 'box-danger';
+                                     }else{
+                            html    += 'box-success';
+                                     }
+                            html+= '">'+
 
-                       if(response != ''){
-                             html= '';
-                                // if (element.annoceType== "Offre"){
-                                            // '<div class=""><img src="public/images/.'+element.photo1+'" alt="" > </div>'+
-                                            //    }else{  '<i class="fa fa-question-circle fa-10x text-danger" aria-hidden="true" style="font-size: 3.5rem" ></i>'+
-                                            // }
-                            $.each(response,function (index, element) {
-                                // alert(element.id)
-                                html += '<div class="row my-3 box ';
-                                        if (element.annonceType == "Demande") {
-                                html     += 'box-danger';
-                                         }else{
-                                html    += 'box-success';
-                                         }
-                                html+= '">'+
+                                    '<h3 class="text-center font-weight-bold">'+element.annonceType+'</h3>'+
+                                    '<div class="col-lg-2 col-sm-12 text-center text-lg-right">';
+                                     if (element.annonceType =="Ofrre") {
+                            html        += '';
+                                    }else{
+                            html        += '<i class="fa fa-question-circle fa-10x text-danger" aria-hidden="true" style="font-size: 3.5rem" ></i>';
+                                    }
 
-                                        '<h3 class="text-center font-weight-bold">'+element.annonceType+'</h3>'+
-                                        '<div class="col-lg-2 col-sm-12 text-center text-lg-right">';
-                                         if (element.annonceType =="Ofrre") {
-                                html        += '';
-                                        }else{
-                                html        += '<i class="fa fa-question-circle fa-10x text-danger" aria-hidden="true" style="font-size: 3.5rem" ></i>';
-                                        }
-
-                                 html      +='</div>'+
-                                             '<div class="col-lg-8 col-sm-12 annonce ">'+
-                                                '<ul>'+
-                                                '<li><b>'+element.type+'</b>';
-                                                if (element.offerType != null) {
-                               html            += ' à <b> '+element.offerType+'</b>';
-                                                }
-                                html          +='</li>'+
-                                                '<li>Pays: <b>'+element.country+'</b></li>'+
-                                                '<li>Ville: <b>'+element.town+'</b></li>'+
-                                                '<li>Budget <b>'+element.price+'</b></li>'+
-                                                '<li>Quartier:<b>'+element.quartier+'</b></li>'+
-                                                ' <li class="overflow-hidden">'+element.description+'</li>'+
-                                            '</ul>'+
-                                            '</div>';
-
-                                    html  +='<div class="col-lg-2 col-sm-12 text-center text-lg-right">'+
-                                                '<a href="annonces/",'+element.id+ ')}}" class="btn btn-warning btn-sm-block btn-circle mt-lg-1 mx-lg-0 mt-xs-5" > Details </a>'+
-                                            '</div>'+
+                             html      +='</div>'+
+                                         '<div class="col-lg-8 col-sm-12 annonce ">'+
+                                            '<ul>'+
+                                            '<li><b>'+element.type+'</b>';
+                                            if (element.offerType != null) {
+                           html            += ' à <b> '+element.offerType+'</b>';
+                                            }
+                            html          +='</li>'+
+                                            '<li>Pays: <b>'+element.country+'</b></li>'+
+                                            '<li>Ville: <b>'+element.town+'</b></li>'+
+                                            '<li>Budget <b>'+element.price+'</b></li>'+
+                                            '<li>Quartier:<b>'+element.quartier+'</b></li>'+
+                                            ' <li class="overflow-hidden">'+element.description+'</li>'+
+                                        '</ul>'+
                                         '</div>';
-                           });
-                        }
-                        // alert(html)
-                        $('#section').fadeIn();
-                        $('#section').html(html);
-                   }
-                });
 
-            }
+                                html  +='<div class="col-lg-2 col-sm-12 text-center text-lg-right">'+
+                                            '<a href="annonces/",'+element.id+ ')}}" class="btn btn-warning btn-sm-block btn-circle mt-lg-1 mx-lg-0 mt-xs-5" > Details </a>'+
+                                        '</div>'+
+                                    '</div>';
+                       });
+                    }
+                    // alert(html)
+                    $('#section').fadeIn();
+                    $('#section').html(html);
+               }
+            });
 
-        });
+        }
+
     });
+});
   </script>
 </body>
 </html>

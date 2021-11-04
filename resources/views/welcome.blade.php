@@ -5,23 +5,26 @@
 
     <div class="container">
         <div class="row d-lg-none">
-            <div class="col-8"></div>
-            <div class="col-4 pull-right main-btn ">
-                <a href="{{ route('home') }}" class="my-3 " >Publier</a>
+            <div class="col-7"></div>
+            <div class="col-5 pull-right main-btn ">
+                @guest
+                <li>
+                   <div class="main-btn" >
+                     <a href="{{ route('login') }}"> Se Connceter</a>
+                    </div>
+                </li>
+              @endguest
+              @auth
+              <li ><div class="main-btn"><a href="{{ route('home') }}" >Publier</a></div></li>
+              @endauth
             </div>
         </div>
         <div class="row">
-            <div class="col-12 col-lg-4 my-4 d-block">
-                <form action="">
-                    <div class="form-group mx-3">
-                        <div class="input-group">
-                            <input type="text" id="search" name="search" class="d-none d-lg-block form-control form-control-lg search mb-5" placeholder="Search">
-                        </div>
-                    </div>
-                    {{csrf_field()}}
-                </form>
+            <div class="col-12 col-lg-4 d-block my-3">
+                @component('components.serch-bar')
+                    @slot('class') d-none d-lg-block @endslot
+                @endcomponent   
             </div>
-
         </div>
       <div class="row">
 
@@ -78,9 +81,9 @@
   </div>
 
   <div id="services" class="our-services section">
-    <div class="services-right-dec">
+    {{-- <div class="services-right-dec">
       <img src="welcome/assets/images/services-right-dec.png" alt="">
-    </div>
+    </div> --}}
     <div class="container">
       <div class="services-left-dec">
         <img src="welcome/assets/images/services-left-dec.png" alt="">
@@ -100,14 +103,12 @@
                 <div class="item">
                     <h5>Recherche d'une maison <b><i>{{$request_annonce->type}}</i></b> , dans le quartier <b>{{$request_annonce->quartier}}</b> </h5>
                     <div class="icon mt-2"><img src="welcome/assets/images/service-icon-01.png" alt=""></div>
-                    {{-- <div class="icon"><img src="welcome/assets/images/service-icon-03.png" alt=""></div> --}}
+
                     <p>{{ Str::substr($request_annonce->description, 0, 100).'...' }}</p>
                     <div class="text-left">
                         <a href="{{route('annonces.show',$request_annonce->id)}}" class="btn btn-primary btn-sm btn-circle">
                             detail
                         </a>
-
-
                     </div>
                 </div>
 
@@ -119,17 +120,12 @@
 
               @endforelse
 
-
             </div>
 
-
-            {{-- <div class="text-center mt-5">
+            <div class="text-center mt-2">
                 <a href="{{route('annonces.index','Demande')}}" class="btn btn-circle btn-danger">Voir plus de demande</a>
-            </div> --}}
-
-            <div class="text-center mt-5">
-                <a href="{{route('annonces.index','Offre')}}" class="btn btn-block btn-lg btn-circle btn-danger">Voir plus d'offre </a>
             </div>
+
         </div>
       </div>
     </div>
@@ -154,21 +150,14 @@
           <div class="section-heading">
             <h2>A propos de <em>Allô</em> <span> Demarcheur</span> </h2>
             <span>Nos Statistiques</span>
-            {{-- <p>
-                <p><em class="text-primary">Publier une annonce</em>.... </p>
-                <ul>
-                    <li>Connectez vous à votre compte ou créer un compte si vous n'en avez pas</li>
-                    <li>Cliquer sur le boutton nouveau sur le tableau de bord et renseigner les informations</li>
-                    <li>Enfin Cliquez sur le button publier</li>
-                </ul>
-            </p> --}}
+          
             <div class="row">
               <div class="col-lg-4">
                 <div class="fact-item">
                   <div class="count-area-content">
-                    <div class="icon">
+                    {{-- <div class="icon">
                       <img src="welcome/assets/images/service-icon-01.png" alt="">
-                    </div>
+                    </div> --}}
                     <div class="count-digit"> {{$users->count()}} </div>
                     <div class="count-title">Utilisateurs</div>
                     {{-- <p>Lorem ipsum dolor sitti amet, consectetur.</p> --}}
@@ -178,9 +167,9 @@
               <div class="col-lg-4">
                 <div class="fact-item">
                   <div class="count-area-content">
-                    <div class="icon">
+                    {{-- <div class="icon">
                       <img src="welcome/assets/images/service-icon-02.png" alt="">
-                    </div>
+                    </div> --}}
                     <div class="count-digit">{{$demarcheurs->count()}}</div>
                     <div class="count-title">Demarcheurs</div>
                     {{-- <p>Lorem ipsum dolor sitti amet, consectetur.</p> --}}
@@ -190,9 +179,9 @@
               <div class="col-lg-4">
                 <div class="fact-item">
                   <div class="count-area-content">
-                    <div class="icon">
+                    {{-- <div class="icon">
                       <img src="welcome/assets/images/service-icon-03.png" alt="">
-                    </div>
+                    </div> --}}
                     <div class="count-digit">{{$annonces->count()}}</div>
                     <div class="count-title">Publications</div>
                     {{-- <p>Lorem ipsum dolor sitti amet, consectetur.</p> --}}

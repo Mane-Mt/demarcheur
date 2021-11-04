@@ -1,6 +1,6 @@
 
 <button type="button" class="btn btn-success btn-sm-block btn-circle mt-lg-1 mt-xs-5 " data-bs-toggle="modal" data-bs-target="#exampleModal{{$annonce->id}}">
-    Postuler
+    Numero
   </button>
 
   <!-- Modal -->

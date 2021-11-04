@@ -8,7 +8,7 @@
             <div class="col-lg-8 box p-5">
                 <ul>
                     @include('common.annonce-list-item')
-                    <li class="overflow-hidden">{{$annonce->description }}</li>
+                    <li >{{$annonce->description }}</li>
                 </ul>
                 @if ($annonce->annonceType == 'Offre')
                 <div class="row">
