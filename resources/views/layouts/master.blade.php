@@ -18,10 +18,10 @@
 
     <!-- Additional CSS Files -->
     <link rel="stylesheet" href="{{asset('welcome/assets/css/fontawesome.css') }}">
-    <link rel="stylesheet" href="{{asset('welcome/assets/css/templatemo-onix-digital.css') }}">
+    <link rel="stylesheet" href="{{asset('welcome/assets/css/templatemo-onix-digital1.css') }}">
     <link rel="stylesheet" href="{{asset('welcome/assets/css/animated.css') }}">
     <link rel="stylesheet" href="{{asset('welcome/assets/css/owl.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/style.css')}}">
+    <link rel="stylesheet" href="{{ asset('assets/css/main.css')}}">
 <!--
 
 TemplateMo 565 Onix Digital

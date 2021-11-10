@@ -23,7 +23,7 @@
             <div class="col-12 col-lg-4 d-block my-3">
                 @component('components.serch-bar')
                     @slot('class') d-none d-lg-block @endslot
-                @endcomponent   
+                @endcomponent
             </div>
         </div>
       <div class="row">
@@ -150,7 +150,7 @@
           <div class="section-heading">
             <h2>A propos de <em>Allô</em> <span> Demarcheur</span> </h2>
             <span>Nos Statistiques</span>
-          
+
             <div class="row">
               <div class="col-lg-4">
                 <div class="fact-item">
@@ -222,8 +222,7 @@
               @forelse ($offer_annonces as $offer_annonce)
                 <div class="item">
                     <div class="thumb">
-                    <img src="{{asset('public/images/
-                    '.$offer_annonce->photo1)}}" alt="" height="600px" width="auto">
+                    <img src="{{asset('public/images/'.$offer_annonce->photo1)}}" alt="" height="600px" width="auto">
                     <div class="hover-effect">
                         <div class="inner-content">
                             <span>{{$offer_annonce->type}}</span><br>
