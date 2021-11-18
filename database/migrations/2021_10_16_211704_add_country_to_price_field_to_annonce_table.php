@@ -16,7 +16,7 @@ class AddCountryToPriceFieldToAnnonceTable extends Migration
         Schema::table('annonces', function (Blueprint $table) {
             $table->string('country')->after('type')->nullable();
             $table->string('town')->after('country')->nullable();
-            $table->integer('price')->after('quartier')->nullable();
+            $table->float('price')->after('quartier')->nullable();
         });
     }
 

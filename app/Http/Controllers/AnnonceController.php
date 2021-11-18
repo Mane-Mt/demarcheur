@@ -15,9 +15,9 @@ class AnnonceController extends Controller
     }
     public function index($annonceType =null){
         if ($annonceType == null) {
-            $data['annonces'] = Annonce::orderBy('id','desc')->get();
+            $data['annonces'] = Annonce::orderBy('updated_at','desc')->get();
         }else{
-            $data['annonces'] = Annonce::where('annonceType',$annonceType)->orderBy('id','desc')->get();
+            $data['annonces'] = Annonce::where('annonceType',$annonceType)->orderBy('updated_at','desc')->get();
         }
 
         return view('annonces.index',$data);

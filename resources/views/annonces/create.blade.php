@@ -28,7 +28,8 @@
                                             <label for="annonceType" class="col-md-3">Type d'annonce</label>
                                             <div class="input-group col-md-9">
                                                 {{-- {{dd(auth()->user()->usertype)}} --}}
-                                                <select class="custom-select" id="annonceType" name="annonceType" required>
+                                                <select class="custom-select" required id="annonceType" name="annonceType" required>
+                                                    <option value="">Choisir</option>
                                                     @can('postAnnonce')
                                                     <option value="Offre"  {{ auth()->user()->usertype == 'Demarcheur'|| auth()->user()->usertype == 'Admin' ?'selected':'' }}>Offre</option>
                                                     @endcan
@@ -41,8 +42,9 @@
                                             <label for="inputGroupSelect01" class="col-md-3">Type de chambre</label>
                                             <div class="input-group col-md-9">
 
-                                                <select class="custom-select" id="inputGroupSelect01" name="type_chamb" required>
-                                                    <option value="Une Piece" selected>Une Piece</option>
+                                                <select class="custom-select" required id="inputGroupSelect01" name="type_chamb" required>
+                                                    <option value="">Choisir</option>
+                                                    <option value="Une Piece" >Une Piece</option>
                                                     <option value="Chambre salon">Chambre salon</option>
                                                     <option value="Deux chambres salon">Deux chambres salon</option>
                                                     <option value="Villa">Villa</option>
@@ -56,10 +58,11 @@
                                             <label for="inputGroupSelect01" class="col-md-3">Type de demande / offre</label>
                                             <div class="input-group col-md-9">
 
-                                                <select class="custom-select" id="inputGroupSelect01" name="offerType" required>
+                                                <select class="custom-select" required id="inputGroupSelect01" name="offerType" required>
+                                                    <option value="">Choisir</option>
                                                     <option value="louer" selected>A louer</option>
-                                                    <option value="vendre" id="sell" hidden>A vendre</option>
-                                                    <option value="acheter" id="buy" hidden>A acheter</option>
+                                                    <option value="vendre" id="sell" {{ auth()->user()->usertype == 'Demarcheur'|| auth()->user()->usertype == 'Admin' ?'':'hidden' }}>A vendre</option>
+                                                    <option value="acheter" id="buy" {{ (auth()->user()->usertype == 'Simple' )?'':'hidden' }}>A acheter</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -89,7 +92,7 @@
                                         <div class="form-group row">
                                             <label for="price" class="col-md-3">budget / Prix</label>
                                             <div class="col-md-9">
-                                                <input class="form-control" id="inputGroupSelect01" name="price" required>
+                                                <input type="number" class="form-control" id="inputGroupSelect01" name="price" required>
                                             </div>
                                         </div>
 
@@ -255,6 +258,6 @@ function previewFile(input){
         });
     });
 
-   
+
 </script>
 @endpush
