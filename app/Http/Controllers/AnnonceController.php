@@ -9,9 +9,11 @@ use Illuminate\Support\Facades\Auth;
 
 class AnnonceController extends Controller
 {
+    // private $annonceTypeTab;
     public function __construct(AnnonceService $annonceService)
     {
         $this->annonceService = $annonceService;
+        // $this->annonceTypeTab =    $this->annonceService->getAnnonceType();
     }
     public function index($annonceType =null){
         if ($annonceType == null) {
@@ -24,12 +26,12 @@ class AnnonceController extends Controller
 
     }
     public function create(){
-        return view('annonces.create');
+        $data['annonceTypeTab'] = $this->annonceService->getAnnonceType();
+        return view('annonces.create',$data);
     }
 
     public function show($id){
         $data['annonce'] = Annonce::find($id);
-
         return view('annonces.detail',$data);
     }
 
@@ -78,7 +80,7 @@ class AnnonceController extends Controller
     {
         //
          $data['annonce']= Annonce::findOrFail($id);
-
+        $data['annonceTypeTab'] = $this->annonceService->getAnnonceType();
         return view('annonces.edit',$data);
 
     }

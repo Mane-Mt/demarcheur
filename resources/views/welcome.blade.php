@@ -51,9 +51,9 @@
                   <h2>Voulez vous <em>publier</em> une <span>annonce</span> ?</h2>
                   <p>Veuillez créer un compte ou contacter nous...</p>
                   <div class="down-buttons">
-                    <div class="main-blue-button-hover">
+                    {{-- <div class="main-blue-button-hover">
                       <a href="#pricing">Nos services</a>
-                    </div>
+                    </div> --}}
                     <div class="call-button">
                       <a href="#"><i class="fa fa-phone"></i> +228 70888992</a>
                     </div>
@@ -64,9 +64,9 @@
                   <h2><em>BIENVENUE</em> sur <span>{{ env('APP_NAME')}}</span></h2>
                   {{-- <p>Please <a rel="nofollow" href="https://www.paypal.me/templatemo" target="_blank">support us</a> a little via PayPal if this digital marketing HTML template is useful for you. Thank you.</p> --}}
                   <div class="down-buttons">
-                    <div class="main-blue-button-hover">
+                    {{-- <div class="main-blue-button-hover">
                       <a href="#about">GUide d'utilisation</a>
-                    </div>
+                    </div> --}}
                     <div class="call-button">
                       <a href="#"><i class="fa fa-facebook"></i> {{ env('APP_NAME')}}</a>
                     </div>

@@ -42,13 +42,11 @@
                                                 {{-- {{dd($annonce->type)}} --}}
                                                 <select class="custom-select" require id="inputGroupSelect01" name="type_chamb" required>
                                                     <option value="">Choisir</option>
-                                                    <option  {{ $annonce->type =='Une Piece' ?'selected':'' }} value="Une Piece" >Une Piece</option>
-                                                    <option  {{ $annonce->type =='Chambre salon' ?'selected':'' }} value="Chambre salon">Chambre salon</option>
-                                                    <option  {{ $annonce->type =='Deux chambres salon' ?'selected':'' }} value="Deux chambres salon">Deux chambres salon</option>
-                                                    <option  {{ $annonce->type =='Villa' ?'selected':'' }} value="Villa">Villa</option>
-                                                    <option  {{ $annonce->type =='Maison' ?'selected':'' }} value="Maison">Maison</option>
-                                                    <option  {{ $annonce->type =='Terrain' ?'selected':'' }} value="Terrain">Terrain</option>
-                                                    <option  {{ $annonce->type =='autre' ?'selected':'' }} value="autre">autre</option>
+                                                    {{-- <option  {{ $annonce->type =='Une Piece' ?'selected':'' }} value="Une Piece" >Une Piece</option> --}}
+                                                    @for ($i = 0;$i<count($annonceTypeTab); $i++)
+                                                    <option  {{ $annonce->type ==$annonceTypeTab[$i] ? 'selected' :'' }} value="{{$annonceTypeTab[$i]}}" >{{$annonceTypeTab[$i]}}</option>
+                                                    @endfor
+
                                                 </select>
                                             </div>
                                         </div>

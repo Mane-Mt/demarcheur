@@ -206,7 +206,7 @@ https://templatemo.com/tm-565-onix-digital
                                         '</div>';
 
                                 html  +='<div class="col-lg-2 col-sm-12 text-center text-lg-right">'+
-                                            '<a href="annonces/",'+element.id+ ')}}" class="btn btn-warning btn-sm-block btn-circle mt-lg-1 mx-lg-0 mt-xs-5" > Details </a>'+
+                                            '<a href="annonces/'+element.id+'" class="btn btn-warning btn-sm-block btn-circle mt-lg-1 mx-lg-0 mt-xs-5" > Details </a>'+
                                         '</div>'+
                                     '</div>';
                        });

@@ -44,12 +44,10 @@
 
                                                 <select class="custom-select" required id="inputGroupSelect01" name="type_chamb" required>
                                                     <option value="">Choisir</option>
-                                                    <option value="Une Piece" >Une Piece</option>
-                                                    <option value="Chambre salon">Chambre salon</option>
-                                                    <option value="Deux chambres salon">Deux chambres salon</option>
-                                                    <option value="Villa">Villa</option>
-                                                    <option value="Terrain">Terrain</option>
-                                                    <option value="Maison">Maison</option>
+                                                  
+                                                    @for ($i = 0;$i<count($annonceTypeTab); $i++)
+                                                    <option   value="{{$annonceTypeTab[$i]}}" >{{$annonceTypeTab[$i]}}</option>
+                                                    @endfor
                                                 </select>
                                             </div>
                                         </div>
