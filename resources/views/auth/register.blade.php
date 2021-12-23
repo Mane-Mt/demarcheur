@@ -33,9 +33,7 @@
                                             <input  type="phone" name="phone" class="form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}" placeholder="{{ __('ex: 90 00 00 00') }}" value="{{ old('phone') }}" required>
                                         </div>
                                     </div>
-                                    
-                                    
-                                    
+
                                     <p class="text-danger"> * Ce numéro sera mis à la disponibinilité des utilisateurs pour vous contacter !!!</p>
                                 @if ($errors->has('phone'))
                                     <span class="invalid-feedback" style="display: block;" role="alert">

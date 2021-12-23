@@ -1,4 +1,5 @@
 
+
 @extends('layouts.app')
 
 @section('content')
@@ -43,7 +44,7 @@
                                                 <select class="custom-select" required id="inputGroupSelect01" name="type_chamb" required>
                                                     <option value="">Choisir</option>
                                                     @for ($i = 0;$i<count($annonceTypeTab); $i++)
-                                                        <option   value="{{$annonceTypeTab[$i]}}" >{{$annonceTypeTab[$i]}}</option>
+                                                        <option   value="{{$annonceTypeTab[$i]}}">{{$annonceTypeTab[$i]}}</option>
                                                     @endfor
                                                 </select>
                                             </div>
@@ -52,6 +53,7 @@
                                         <div class="form-group row">
                                             <label for="inputGroupSelect01" class="col-md-3">Type de demande / offre</label>
                                             <div class="input-group col-md-9">
+
                                                 <select class="custom-select" required id="inputGroupSelect01" name="offerType" required>
                                                     <option value="">Choisir</option>
                                                     <option value="louer" selected>A louer</option>
@@ -154,6 +156,7 @@
                                         {{-- @endcan --}}
                                     </div>
                                     <br><br>
+
                                     <div class="card-footer">
                                         <div class="">
                                             <a href="dashboard" class="btn btn-danger">annuler</a>

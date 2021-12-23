@@ -84,6 +84,7 @@ https://templatemo.com/tm-565-onix-digital
                 <li>
                    <div class="main-btn" >
                      <a href="{{ route('login') }}"  style="background-color: red; border-radius: 30px;" data-bs-toggle="modal" data-bs-target="#type_annone" > Publier</a>
+
                     </div>
                 </li>
                                
@@ -91,6 +92,7 @@ https://templatemo.com/tm-565-onix-digital
               @endguest
               @auth
               <li ><div class="main-btn"><a href="{{ route('home') }}"  style="background-color: red; border-radius: 30px;"  >Publier</a></div></li>
+
               @endauth
               {{-- <li> <a href="#"></a></li> --}}
             </ul>

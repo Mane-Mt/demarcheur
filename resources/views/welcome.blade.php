@@ -23,7 +23,9 @@
               @auth
                 <li ><div class="main-btn"><a href="{{ route('home') }}"  style="background-color: red; border-radius: 30px;"  >Publier</a></div></li>
               @endauth
+
             </div>
+
         </div>
         <link rel="preconnect" href="https://fonts.gstatic.com">    <div class="row">
           <div class="col-12 col-lg-4 d-block my-3">
@@ -82,14 +84,17 @@
                         <a href="#"><i class="fa fa-facebook"></i> {{ env('APP_NAME')}}</a>
                       </div>
                     </div>
+
                   </div>
                 </div>
               </div>
             </div>
+
           </div>
       </div>
     </div>
   </div>
+
 
 
   <div class="container">
@@ -123,6 +128,7 @@
                   <a href="{{route('annonces.show',$annonce->id)}}" class="btn btn-warning btn-sm-block btn-circle mt-lg-1 mx-lg-0 mt-xs-5" >
                     Details
                   </a>
+
               </div>
             </div>
         @empty
@@ -138,6 +144,7 @@
   <div class="footer-dec">
     <img src="welcome/assets/images/footer-dec.png" alt="">
   </div>
+
 
   <footer>
     <div class="container">

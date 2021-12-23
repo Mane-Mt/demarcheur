@@ -39,13 +39,23 @@
                                         <div class="form-group row">
                                             <label for="inputGroupSelect01" class="col-md-3">Type de chambre</label>
                                             <div class="input-group col-md-9">
+                                                {{-- {{dd($annonce->type)}} --}}
+                                                <select class="custom-select" require id="inputGroupSelect01" name="type_chamb" required>
+                                                    <option value="">Choisir</option>
+                                                    {{-- <option  {{ $annonce->type =='Une Piece' ?'selected':'' }} value="Une Piece" >Une Piece</option> --}}
+                                                    @for ($i = 0;$i<count($annonceTypeTab); $i++)
+                                                    <option  {{ $annonce->type ==$annonceTypeTab[$i] ? 'selected' :'' }} value="{{$annonceTypeTab[$i]}}" >{{$annonceTypeTab[$i]}}</option>
+                                                    @endfor
 
+<<<<<<< HEAD
                                                 <select class="custom-select" require id="inputGroupSelect01" name="type_chamb" required>
                                                     <option value="">Choisir</option>
                                                     @for ($i = 0;$i<count($annonceTypeTab); $i++)
                                                     <option  {{ $annonce->type ==$annonceTypeTab[$i] ? 'selected' :'' }} value="{{$annonceTypeTab[$i]}}" >{{$annonceTypeTab[$i]}}</option>
                                                     @endfor
 
+=======
+>>>>>>> 7fd86786282c76e60f996e3b6cec786edcb467ad
                                                 </select>
                                             </div>
                                         </div>
