@@ -27,23 +27,36 @@
                                         <div class="form-group row">
                                             <label for="annonceType" class="col-md-3">Type d'annonce</label>
                                             <div class="input-group col-md-9">
-
-                                                <select class="custom-select" id="annonceType" name="annonceType" required>
-                                                    <option value="Offre"  {{ auth()->user()->usertype == 'demarcheur'?'selected':'' }}>Offre</option>
-                                                    <option value="Demande"  {{ auth()->user()->usertype == 'simple' || auth()->user()->usertype == 'admin'?'selected':'' }}>Demande</option>
+                                                {{-- {{dd(auth()->user()->usertype)}} --}}
+                                                <select class="custom-select" required id="annonceType" name="annonceType" required>
+                                                    <option value="">Choisir</option>
+                                                    @can('postAnnonce')
+                                                    <option value="Offre"  {{ auth()->user()->usertype == 'Demarcheur'|| auth()->user()->usertype == 'Admin' ?'selected':'' }}>Offre</option>
+                                                    @endcan
+                                                    <option value="Demande"  {{ (auth()->user()->usertype == 'Simple' )?'selected':'' }}>Demande</option>
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label for="inputGroupSelect01" class="col-md-3">Type de chambre</label>
                                             <div class="input-group col-md-9">
+                                                <select class="custom-select" required id="inputGroupSelect01" name="type_chamb" required>
+                                                    <option value="">Choisir</option>
+                                                    @for ($i = 0;$i<count($annonceTypeTab); $i++)
+                                                        <option   value="{{$annonceTypeTab[$i]}}" >{{$annonceTypeTab[$i]}}</option>
+                                                    @endfor
+                                                </select>
+                                            </div>
+                                        </div>
 
-                                                <select class="custom-select" id="inputGroupSelect01" name="type_chamb" required>
-                                                    <option value="Une Piece" selected>Une Piece</option>
-                                                    <option value="Chambre salon">Chambre salon</option>
-                                                    <option value="Deux chambres salon">Deux chambres salon</option>
-                                                    <option value="Villa">Villa</option>
-                                                    <option value="autre">autre</option>
+                                        <div class="form-group row">
+                                            <label for="inputGroupSelect01" class="col-md-3">Type de demande / offre</label>
+                                            <div class="input-group col-md-9">
+                                                <select class="custom-select" required id="inputGroupSelect01" name="offerType" required>
+                                                    <option value="">Choisir</option>
+                                                    <option value="louer" selected>A louer</option>
+                                                    <option value="vendre" id="sell" {{ auth()->user()->usertype == 'Demarcheur'|| auth()->user()->usertype == 'Admin' ?'':'hidden' }}>A vendre</option>
+                                                    <option value="acheter" id="buy" {{ (auth()->user()->usertype == 'Simple' )?'':'hidden' }}>A acheter</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -73,27 +86,25 @@
                                         <div class="form-group row">
                                             <label for="price" class="col-md-3">budget / Prix</label>
                                             <div class="col-md-9">
-                                                <input class="form-control" id="inputGroupSelect01" name="price" required>
+                                                <input type="number" class="form-control" id="inputGroupSelect01" name="price" required>
                                             </div>
                                         </div>
 
                                         <div class="form-group row">
                                             <label for="description" class="col-md-3">Description</label>
                                             <div class="col-md-9">
-                                                    <textarea class="form-control col-md-12" id="description" placeholder="la description de la chambre et de la maisaon ou de l'endroit" name="description" required></textarea>
-                                                </label>
+                                                <textarea class="form-control col-md-12" id="description" placeholder="la description de la chambre et de la maisaon ou de l'endroit" name="description" required></textarea>
                                             </div>
                                         </div>
 
                                         <br>
-                                        <div id="photos" hidden>
+                                        {{-- @can('postAnnonce') --}}
+                                        <div id="photos"  {{ (auth()->user()->usertype == 'Simple')?'hidden':'' }} >
                                             <div class="form-group row">
                                                 <label for="File1" class="col-md-3">Photo N°1</label>
                                                 <div class="col-md-9">
                                                     <label class="custom-file-label" for="File1">
-                                                        <input type="file" id="File1" name="photo1" placeholder="Choisir la photo de face de la chambre"  class="file" onchange="previewFile(this)">
-
-                                                    </label>
+                                                    <input type="file" id="File1" name="photo1" placeholder="Choisir la photo de face de la chambre"  class="file" onchange="previewFile(this)">
                                                 </div>
                                             </div>
                                             <br>
@@ -109,24 +120,24 @@
                                             <div class="form-group row">
                                                 <label for="File3" class="col-md-3">Photo N°3</label>
                                                 <div class="col-md-9">
-                                                    <label class="custom-file-label" for="File3">
-                                                        <input type="file" id="File3"  name="photo3" class="file" onchange="previewFile(this)"></label>
+                                                    <label class="custom-file-label" for="File3"></label>
+                                                    <input type="file" id="File3"  name="photo3" class="file" onchange="previewFile(this)"></label> 
                                                 </div>
                                             </div>
                                             <br>
                                             <div class="form-group row">
                                                 <label for="File4" class="col-md-3">Photo N°4</label>
                                                 <div class="col-md-9">
-                                                    <label class="custom-file-label" for="File4">
-                                                        <input type="file" id="File4" name="photo4" class="file" onchange="previewFile(this)"></label>
+                                                    <label class="custom-file-label" for="File4"></label>
+                                                    <input type="file" id="File4" name="photo4" class="file" onchange="previewFile(this)"></label>
                                                 </div>
                                             </div>
                                             <br>
                                             <div class="form-group row">
                                                 <label for="File5" class="col-md-3">Photo N°5</label>
                                                 <div class="col-md-9">
-                                                    <label class="custom-file-label" for="File5">
-                                                        <input type="file" id="File5" name="photo5" class="file" onchange="previewFile(this)"></label>
+                                                    <label class="custom-file-label" for="File5"></label>
+                                                    <input type="file" id="File5" name="photo5" class="file" onchange="previewFile(this)"></label>
                                                 </div>
                                             </div>
                                             <br><br>
@@ -140,14 +151,14 @@
                                             </div>
                                         {{-- @endcan --}}
                                         </div>
-
-                                        <br><br>
+                                        {{-- @endcan --}}
+                                    </div>
+                                    <br><br>
                                     <div class="card-footer">
                                         <div class="">
                                             <a href="dashboard" class="btn btn-danger">annuler</a>
                                             <button type="submit" class="btn btn-primary">Publier</button>
                                         </div>
-
                                     </div>
                                   </div>
                                 </div>
@@ -224,26 +235,18 @@ function previewFile(input){
            if( $(this).val() == 'Offre'){
             $('#photos').attr('hidden', false);
             $('#File1').attr('required',true);
+            $('#sell').attr('hidden', false);
+            $('#buy').attr('hidden', true);
 
            }else{
             $('#photos').attr('hidden', true);
             $('#File1').attr('required',false);
+            $('#sell').attr('hidden', true);
+            $('#buy').attr('hidden', false);
            }
         });
     });
 
-    $(document).ready(function () {
-
-           if(  $('#annonceType').val() == 'Offre'){
-            $$('#photos').attr('hidden', false);
-            $('#File1').attr('required',true);
-
-           }else{
-            $('#photos').attr('hidden', true);
-            $('#File1').attr('required',false);
-
-           }
-    });
 
 </script>
 @endpush

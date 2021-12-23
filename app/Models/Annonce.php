@@ -11,6 +11,7 @@ class Annonce extends Model
     use HasFactory;
     protected $fillable =[
     	'type',
+        'phone',
     	'quartier',
     	'description',
     	'annoncestatus',

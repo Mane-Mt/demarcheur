@@ -16,6 +16,8 @@ class CreateAnnoncesTable extends Migration
         Schema::create('annonces', function (Blueprint $table) {
             $table->id();
             $table->string('annonceType');
+            $table->string('offerType')->nullable();
+            $table->string('phone')->nullable();
             $table->string('type');
             $table->string('quartier');
             $table->text('description');
@@ -25,7 +27,7 @@ class CreateAnnoncesTable extends Migration
             $table->string('photo3')->nullable();
             $table->string('photo4')->nullable();
             $table->string('photo5')->nullable();
-            $table->foreignId('user_id')->references('id')->on('users')->onDelete('restrict')->onUpdate('restrict');
+            $table->foreignId('user_id')->nullable()->references('id')->on('users')->onDelete('restrict')->onUpdate('restrict');
             $table->timestamps();
         });
     }

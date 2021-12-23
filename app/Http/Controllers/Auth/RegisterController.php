@@ -52,6 +52,7 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'phone' => ['required', 'unique:users', 'string', 'min:8','max:11'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'usertype'=>['required']
         ]);
     }
 
@@ -64,8 +65,9 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         return User::create([
-            'phone' => $data['phone'],
+            'phone' => $data['code'].''.$data['phone'],
             'password' => Hash::make($data['password']),
+            'usertype'=>$data['usertype']
         ]);
     }
 }

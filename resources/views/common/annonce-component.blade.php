@@ -43,14 +43,26 @@
                 </div>
                 <div class="modal-body">
                 &emsp;&emsp;
-                              <span class="call-button">
-                                <a href="tel:+228{{$annonce->user->phone}}"><i class="fa fa-phone"></i> 
-                                  +228{{$annonce->user->phone}} &emsp;&emsp;
-                                </a>
-                              </span>
-                            <span class="call-button">
-                              <a href="https://wa.me/228{{$annonce->user->phone}}"><i class="fa fa-whatsapp"></i></a>
-                            </span>
+                @if ($annonce->user != null)
+                    <span class="call-button">
+                      <a href="tel:+{{$annonce->user->phone}}"><i class="fa fa-phone"></i> 
+                        {{$annonce->user->phone}} &emsp;&emsp;
+                      </a>
+                    </span>
+                    <span class="call-button">
+                      <a href="https://wa.me/{{$annonce->user->phone}}"><i class="fa fa-whatsapp"></i></a>
+                    </span>
+                @else
+                    <span class="call-button">
+                      <a href="tel:+{{$annonce->phone}}"><i class="fa fa-phone"></i> 
+                        {{$annonce->phone}} &emsp;&emsp;
+                      </a>
+                    </span>
+                    <span class="call-button">
+                      <a href="https://wa.me/{{$annonce->phone}}"><i class="fa fa-whatsapp"></i></a>
+                    </span>
+                @endif
+
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Ok</button>

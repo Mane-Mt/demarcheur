@@ -9,27 +9,29 @@ use Illuminate\Support\Facades\Auth;
 
 class AnnonceController extends Controller
 {
+    // private $annonceTypeTab;
     public function __construct(AnnonceService $annonceService)
     {
         $this->annonceService = $annonceService;
+        // $this->annonceTypeTab =    $this->annonceService->getAnnonceType();
     }
     public function index($annonceType =null){
         if ($annonceType == null) {
-            $data['annonces'] = Annonce::orderBy('id','desc')->get();
+            $data['annonces'] = Annonce::orderBy('updated_at','desc')->get();
         }else{
-            $data['annonces'] = Annonce::where('annonceType',$annonceType)->orderBy('id','desc')->get();
+            $data['annonces'] = Annonce::where('annonceType',$annonceType)->orderBy('updated_at','desc')->get();
         }
 
         return view('annonces.index',$data);
 
     }
     public function create(){
-        return view('annonces.create');
+        $data['annonceTypeTab'] = $this->annonceService->getAnnonceType();
+        return view('annonces.create',$data);
     }
 
     public function show($id){
         $data['annonce'] = Annonce::find($id);
-
         return view('annonces.detail',$data);
     }
 
@@ -40,7 +42,8 @@ class AnnonceController extends Controller
                         ->orWhere('country','LIKE','%'.$value.'%')
                         ->orWhere('town','LIKE','%'.$value.'%')
                         ->orWhere('price','LIKE','%'.$value.'%')
-                        // ->orWhere('quartier','LIKE','%'.$value.'%')
+                        ->orWhere('offerType','LIKE','%'.$value.'%')
+                        ->orderBy('updated_at','desc')
                         ->get();
         return response()->json($annonces);
     }
@@ -77,7 +80,7 @@ class AnnonceController extends Controller
     {
         //
          $data['annonce']= Annonce::findOrFail($id);
-
+        $data['annonceTypeTab'] = $this->annonceService->getAnnonceType();
         return view('annonces.edit',$data);
 
     }
@@ -121,7 +124,7 @@ class AnnonceController extends Controller
         $quartier_ou_trouve_chambre =$request->input('quartier');
         $descrition_de_chambre = $request->input('description');
         $etat_annonce = 1;//pour dir que l'annonce est d'aactualite
-
+        //$annonce_type = $request->input('description');
         //traitement des photos
         // Testons si le fichier a bien été envoyé et s'il n'y a pasd'erreur
         $photo1 = $request->file('photo1');
@@ -256,6 +259,8 @@ class AnnonceController extends Controller
         }
 
         $annonce->annonceType = $request->annonceType;
+        $annonce->offerType = $request->offerType;
+        $annonce->phone = $request->code.''.$request->phone;
         $annonce->country = $request->country;
         $annonce->town = $request->town;
         $annonce->price = $request->price;

@@ -29,7 +29,8 @@
                                             <label for="annonceType" class="col-md-3">Type d'annonce</label>
                                             <div class="input-group col-md-9">
 
-                                                <select class="custom-select" id="annonceType" name="annonceType" required>
+                                                <select class="custom-select" require id="annonceType" name="annonceType" required>
+                                                    <option value="">Choisir</option>
                                                     <option value="Offre"  {{ $annonce->annonceType =='Offre' || auth()->user()->usertype == 'demarcheur'?'selected':'' }}>Offre</option>
                                                     <option value="Demande"  {{ $annonce->annonceType =='Demande' || auth()->user()->usertype == 'simple' || auth()->user()->usertype == 'admin'?'selected':'' }}>Demande</option>
                                                 </select>
@@ -39,22 +40,57 @@
                                             <label for="inputGroupSelect01" class="col-md-3">Type de chambre</label>
                                             <div class="input-group col-md-9">
 
-                                                <select class="custom-select" id="inputGroupSelect01" name="type_chamb" required>
-                                                    <option  {{ $annonce->type =='Une Piece' ?'selected':'' }}value="Une Piece" >Une Piece</option>
-                                                    <option  {{ $annonce->type =='Chambre salon' ?'selected':'' }}value="Chambre salon">Chambre salon</option>
-                                                    <option  {{ $annonce->type =='Deux chambres salon' ?'selected':'' }}value="Deux chambres salon">Deux chambres salon</option>
-                                                    <option  {{ $annonce->type =='Villa' ?'selected':'' }}value="Villa">Villa</option>
-                                                    <option  {{ $annonce->type =='autre' ?'selected':'' }}value="autre">autre</option>
+                                                <select class="custom-select" require id="inputGroupSelect01" name="type_chamb" required>
+                                                    <option value="">Choisir</option>
+                                                    @for ($i = 0;$i<count($annonceTypeTab); $i++)
+                                                    <option  {{ $annonce->type ==$annonceTypeTab[$i] ? 'selected' :'' }} value="{{$annonceTypeTab[$i]}}" >{{$annonceTypeTab[$i]}}</option>
+                                                    @endfor
+
                                                 </select>
                                             </div>
                                         </div>
                                         <!-- pour taper le quartier dans lequel l'on cherche la chambre à louer -->
-                                            <div class="form-group row">
+                                        <div class="form-group row">
+                                            <label for="inputGroupSelect01" class="col-md-3">Type de demande / offre</label>
+                                            <div class="input-group col-md-9">
+
+                                                <select class="custom-select" require id="inputGroupSelect01" name="offerType" required>
+                                                    <option value="">Choisir</option>
+                                                    <option value="louer" selected>A louer</option>
+                                                    <option value="vendre" id="sell" {{$annonce->offerType == 'Offre' || auth()->user()->usertype == 'Demarcheur'|| auth()->user()->usertype == 'Admin' ?'':'hidden' }}>A vendre</option>
+                                                    <option value="acheter" id="buy" {{ ($annonce->offerType == 'Demande' || auth()->user()->usertype == 'Simple' )?'':'hidden' }}>A acheter</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label for="country" class="col-md-3">Pays</label>
+                                            <div class="col-md-9">
+                                                <input class="form-control" id="inputGroupSelect01" value="{{ $annonce->country }}" name="country" required>
+                                            </div>
+                                        </div>
+
+                                        <!-- pour taper le quartier dans lequel l'on cherche la chambre à louer -->
+                                        <div class="form-group row">
+                                            <label for="town" class="col-md-3">Ville</label>
+                                            <div class="col-md-9">
+                                                <input class="form-control" id="inputGroupSelect01" value="{{ $annonce->town }}" name="town" required>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
                                             <label for="quartier" class="col-md-3">Quartier</label>
                                             <div class="col-md-9">
                                                 <input class="form-control" id="inputGroupSelect01" value="{{ $annonce->quartier }}" name="quartier" required>
                                             </div>
                                         </div>
+                                        <div class="form-group row">
+                                            <label for="price" class="col-md-3">budget / Prix</label>
+                                            <div class="col-md-9">
+                                                <input type="number" class="form-control" id="inputGroupSelect01" value="{{ $annonce->price }}" name="price" required>
+                                            </div>
+                                        </div>
+
                                         <div class="form-group row">
                                             <label for="description" class="col-md-3">Description</label>
                                             <div class="col-md-9">
